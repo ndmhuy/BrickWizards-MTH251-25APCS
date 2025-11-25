@@ -1,7 +1,6 @@
 \subsection{Problem 6. Intermediate Value Theorem and root existence}
 Define
 \[F(x)=x^{3}-3x+1.\]
-
 \begin{enumerate}[label=(\alph*)]
     \item Show that $F$ is continuous on $\mathbb{R}$ and evaluate $F(0)$, $F(1)$, and $F(2)$.
     \item Use the Intermediate Value Theorem to prove that $F(x)=0$ has at least one real root in the interval $(0, 1)$.
@@ -9,5 +8,68 @@ Define
 \end{enumerate}
 
 \subsection*{Strategy}
+\begin{itemize}
+    \item \textbf{Part (a):} 
+    To show continuity, we rely on the property that all polynomial functions are continuous on $\mathbb{R}$. Then, we will substitute $x=0, 1, 2$ into the expression of $F(x)$ to evaluate the required function values.
+    
+    \item \textbf{Part (b):} 
+    To prove the existence of a root in the interval $(0, 1)$, we will apply the \textbf{Intermediate Value Theorem (IVT)}. This involves verifying two conditions:
+    \begin{enumerate}
+        \item $F$ is continuous on the closed interval $[0, 1]$.
+        \item The signs of $F(0)$ and $F(1)$ are opposite (i.e., $F(0) \cdot F(1) < 0$).
+    \end{enumerate}
+    
+    \item \textbf{Part (c):} 
+    To generalize the method for locating and counting roots, we need to go beyond continuity. We will use the first derivative $F'(x)$ to identify critical points and determine intervals where the function is monotonic (strictly increasing or decreasing). By constructing a \textbf{variation table}, we can visualize how many times the graph crosses the x-axis.
+\end{itemize}
 \subsection*{Solution}
+\begin{itemize}
+    \item \textbf{(a)}
+Since $F(x)=x^3-3x+1$ is an elementary function, $F$ is continuous on $\mathbb{R}$.\\
+Evaluating the function at specific points:
+\[
+\begin{aligned}
+F(0) &= 0^3 - 3\times1 + 1 = 1 \\
+F(1) &= 1^3 - 3\times1 + 1 = -1 \\
+F(2) &= 2^3 - 3\times2 + 1 = 3
+\end{aligned}
+\]
+    \item \textbf{(b)}
+Since $F(0)=1>0$, $F(1)=-1<0$ and F is continuous on the closed interval $[0, 1]$, by the \textbf{Intermediate Value Theorem}, there exists at least one real root $c \in (0, 1)$ such that $F(c) = 0$
+    \item \textbf{(c)}
+\textbf{Generalization:} 
+To locate and count the real roots of a polynomial, we combine continuity with derivative information as follows:
+\begin{enumerate}
+    \item \textbf{Analyze the derivative:} Calculate $F'(x)$ and solve $F'(x)=0$ to find critical points. These points divide the domain into intervals where $F(x)$ is strictly monotonic (increasing or decreasing).
+    \item \textbf{Construct a variation table:} Determine the sign of $F'(x)$ and the direction of $F(x)$ (limits at infinity and values at critical points).
+    \item \textbf{Apply IVT on monotonic intervals:} 
+    \begin{itemize}
+        \item If $F(x)$ is continuous and monotonic on an interval $(a, b)$, and the values at the endpoints have opposite signs (i.e., $F(a) \cdot F(b) < 0$), then there is \textbf{exactly one} root in that interval.
+        \item Sum the roots found in all intervals to get the total count.
+    \end{itemize}
+\end{enumerate} \\
+\textbf{Apply to this problem:}
+We have $F'(x) = 3x^2 - 3$. \\
+When $F'(x) = 0 \Leftrightarrow x^2 = 1 \Leftrightarrow
+\left[ \begin{aligned}
+    x &= 1 \\
+    x &= -1
+\end{aligned} \right.$ \\
+Construct a variation table: \\
+\begin{center}
+\begin{tikzpicture}
+    \tkzTabInit[lgt=1.5, espcl=3]
+    {$x$ / 1, $F'(x)$ / 1, $F(x)$ / 2}
+    {$-\infty$, $-1$, $1$, $+\infty$}
+    \tkzTabLine{, +, $0$, -, $0$, +, }
+    \tkzTabVar{-/ $-\infty$, +/ $3$, -/ $-1$, +/ $+\infty$}
+\end{tikzpicture} \\
+\end{center}
+\begin{itemize}
+    \item Interval $(-\infty, -1)$: $F(x)$ goes from $-\infty$ to $3$. Since it changes sign, there is \textbf{1 real root}.
+    \item Interval $(-1, 1)$: $F(x)$ goes from $3$ to $-1$. Since $F(-1) > 0$ and $F(1) < 0$, there is \textbf{1 real root}.
+    \item Interval $(1, +\infty)$: $F(x)$ goes from $-1$ to $+\infty$. Since it changes sign, there is \textbf{1 real root}.
+\end{itemize}
+Therefore, the equation $F(x)=0$ has exactly \textbf{3 distinct real roots}.
+\end{itemize}
 \pagebreak
