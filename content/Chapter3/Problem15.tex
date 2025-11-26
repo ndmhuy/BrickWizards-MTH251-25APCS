@@ -10,5 +10,77 @@ Evaluate the following definite integrals using appropriate substitutions:
 \end{enumerate}
 
 \subsection*{Strategy}
+To evaluate these definite integrals, we look for a substitution $u = g(x)$ such that the derivative $g'(x)dx$ (or a multiple of it) appears in the integrand. The general strategy is:
+\begin{enumerate}
+    \item \textbf{Identify the inner function:} Look for a function "inside" another function (e.g., inside a denominator, a power, or a logarithm).
+    \item \textbf{Check the derivative:} Verify if the derivative of that inner function is present as a multiplicative factor.
+    \item \textbf{Change limits}
+\end{enumerate}
+
 \subsection*{Solution}
+\begin{itemize}
+    \item \textbf{(a) Evaluation of $I_1$:} \\
+    We have $I_1 = \int_{0}^{1} \frac{2x}{1+x^2} dx$.
+    \begin{itemize}
+        \item Let $u = 1 + x^2$. Then, $du = 2x \, dx$.
+        \item
+        \begin{itemize}
+            \item When $x = 0 \implies u = 1 + 0^2 = 1$.
+            \item When $x = 1 \implies u = 1 + 1^2 = 2$.
+        \end{itemize} 
+        \item \textbf{We have:}
+        \[
+        I_1 = \int_{1}^{2} \frac{1}{u} \, du = \ln|u| \Big|_{1}^{2} = \ln(2) - \ln(1) = \ln(2).
+        \]
+        \item \textbf{Explanation:} The substitution $u = 1 + x^2$ is natural because the numerator $2x$ is exactly the derivative of the denominator $1 + x^2$. This transforms a rational function into a standard natural logarithm integral form $\int \frac{du}{u}$.
+    \end{itemize}
+
+    \item \textbf{(b) Evaluation of $I_2$:} \\
+    We have $I_2 = \int_{0}^{\pi/2} \sin^3 x \cos x \, dx$.
+    \begin{itemize}
+        \item Let $u = \sin x$. Then, $du = \cos x \, dx$.
+        \item
+        \begin{itemize}
+            \item When $x = 0 \implies u = \sin(0) = 0$.
+            \item When $x = \pi/2 \implies u = \sin(\pi/2) = 1$.
+        \end{itemize}
+        \item \textbf{We have:}
+        \[
+        I_2 = \int_{0}^{1} u^3 \, du = \frac{u^4}{4} \Big|_{0}^{1} = \frac{1^4}{4} - \frac{0^4}{4} = \frac{1}{4}.
+        \]
+        \item \textbf{Explanation:} We recognize that $\cos x$ is the derivative of $\sin x$. Since $\sin x$ is raised to a power, choosing $u = \sin x$ absorbs the $\cos x$ term into $du$, simplifying the integrand to a basic power rule form $u^n$.
+    \end{itemize}
+
+    \item \textbf{(c) Evaluation of $I_3$ and FTC Check:} \\
+    We have $I_3 = \int_{1}^{e} \frac{\ln x}{x} dx = \int_{1}^{e} (\ln x) \cdot \frac{1}{x} dx$.
+    \begin{itemize}
+        \item Let $u = \ln x$. Then, $du = \frac{1}{x} dx$.
+        \item
+        \begin{itemize}
+            \item When $x = 1 \implies u = \ln(1) = 0$.
+            \item When $x = e \implies u = \ln(e) = 1$.
+        \end{itemize}
+        \item \textbf{We have:}
+        \[
+        I_3 = \int_{0}^{1} u \, du = \frac{u^2}{2} \Big|_{0}^{1} = \frac{1}{2} - 0 = \frac{1}{2}.
+        \]
+        \item \textbf{FTC Check:} Consider the integral with a variable upper limit $t$: $A(t) = \int_{1}^{t} \frac{\ln x}{x} dx = \frac{(\ln t)^2}{2}$.
+        Differentiating this result with respect to $t$:
+        \[
+        A'(t) = \frac{1}{2} \cdot 2(\ln t) \cdot (\ln t)' = (\ln t) \cdot \frac{1}{t} = \frac{\ln t}{t}.
+        \]
+        This matches the original integrand.
+    \end{itemize}
+
+    \item \textbf{(d) Incorrect Substitution Example:} \\
+    Consider $I_1 = \int_{0}^{1} \frac{2x}{1+x^2} dx$.
+    \begin{itemize}
+        \item \textbf{Proposed Substitution:} Let $u = 2x$. Then $x = u/2$ and $dx = du/2$.
+        \item \textbf{Resulting Integral:}
+        \[
+        \int \frac{u}{1 + (u/2)^2} \frac{du}{2} = \int \frac{u}{2(1 + u^2/4)} du = \int \frac{2u}{4 + u^2} du.
+        \]
+        \item \textbf{Why it fails/complicates:} While not mathematically "wrong" (it is still solvable), this substitution does not simplify the structure of the problem. 
+    \end{itemize}
+\end{itemize}
 \pagebreak

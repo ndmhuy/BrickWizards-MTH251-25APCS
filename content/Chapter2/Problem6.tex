@@ -37,15 +37,13 @@ F(2) &= 2^3 - 3\times2 + 1 = 3
     \item \textbf{(b)}
 Since $F(0)=1>0$, $F(1)=-1<0$ and F is continuous on the closed interval $[0, 1]$, by the \textbf{Intermediate Value Theorem}, there exists at least one real root $c \in (0, 1)$ such that $F(c) = 0$
     \item \textbf{(c)}
-\textbf{Generalization:} 
 To locate and count the real roots of a polynomial, we combine continuity with derivative information as follows:
 \begin{enumerate}
-    \item \textbf{Analyze the derivative:} Calculate $F'(x)$ and solve $F'(x)=0$ to find critical points. These points divide the domain into intervals where $F(x)$ is strictly monotonic (increasing or decreasing).
-    \item \textbf{Construct a variation table:} Determine the sign of $F'(x)$ and the direction of $F(x)$ (limits at infinity and values at critical points).
-    \item \textbf{Apply IVT on monotonic intervals:} 
+    \item Calculate $F'(x)$ and solve $F'(x)=0$ to find critical points. These points divide the domain into intervals where $F(x)$ is strictly monotonic
+    \item Determine the sign of $F'(x)$ and the direction of $F(x)$ (limits at infinity and values at critical points).
+    \item 
     \begin{itemize}
-        \item If $F(x)$ is continuous and monotonic on an interval $(a, b)$, and the values at the endpoints have opposite signs (i.e., $F(a) \cdot F(b) < 0$), then there is \textbf{exactly one} root in that interval.
-        \item Sum the roots found in all intervals to get the total count.
+        \item If $F(x)$ is continuous and monotonic on an interval $(a, b)$, and the values at the endpoints have opposite signs ($F(a) \cdot F(b) < 0$), then there is \textbf{exactly one} root in that interval. Sum the roots found in all intervals to get the total count.
     \end{itemize}
 \end{enumerate} \\
 \textbf{Apply to this problem:}

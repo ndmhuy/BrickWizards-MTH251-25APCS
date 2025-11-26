@@ -8,5 +8,53 @@ A box with a square base and open top must have a volume of $32\text{ m}^{3}$. T
 \end{enumerate}
 
 \subsection*{Strategy}
+\begin{itemize}
+    \item \textbf{Part (a):} We start by using ($V = x^2h$). We equate this to the given volume ($32\text{ m}^3$) to find the relationship between $x$ and $h$, allowing us to isolate $h$.
+    \item \textbf{Part (b):} We construct the cost function $C(x)$ by summing the cost of the base (Area $\times$ Unit Price) and the cost of the four sides. We then substitute the expression for $h$ from part (a) to make $C(x)$ a function of a single variable.
+    \item \textbf{Part (c):} To minimize the cost, we find the critical points by solving $C'(x) = 0$. Finally, we use the \textbf{Second Derivative Test} ($C''(x)$) to confirm that the critical point corresponds to a local minimum.
+\end{itemize}
 \subsection*{Solution}
+\begin{itemize}
+    \item \textbf{(a)} 
+    The volume of a box with a square base $x$ and height $h$ is given by $V = x^2h$.
+    Given $V = 32$, we have:
+    \[
+    x^2h = 32 \implies h = \frac{32}{x^2}
+    \]
+    \item \textbf{(b)} 
+    The box has an open top, so the surface area consists of one square base ($x^2$) and four rectangular sides ($4xh$).
+    The total cost $C$ is:
+    \[
+    C = 10x^2 + 6\times4xh = 10x^2 + 24xh
+    \]
+    \[
+    C(x) = 10x^2 + 24x\times\frac{32}{x^2}\ = 10x^2 + \frac{768}{x}
+    \]
+    \item \textbf{(c)} 
+    To find the minimum cost, we compute the first derivative $C'(x)$:
+    \[
+    C'(x) = 20x - 768x^{-2} = 20x - \frac{768}{x^2}
+    \]
+    Set $C'(x) = 0$ to find critical points:
+    \[
+    \begin{aligned}
+        20x - \frac{768}{x^2} &= 0 \\
+        20x &= \frac{768}{x^2} (x\ne 0) \\
+        20x^3 &= 768 \\
+        x^3 &= \frac{768}{20} = 38.4 \\
+        x &= \sqrt[3]{38.4} \approx 3.374
+    \end{aligned}
+    \]
+    Calculate the height $h$:
+    \[
+    h = \frac{32}{x^2} = \frac{32}{(\sqrt[3]{38.4})^2} \approx 2.811 \text{ (m)}
+    \]
+    
+    \textbf{Justification (Second Derivative Test):} \\
+    We calculate the second derivative:
+    \[
+    C''(x) = 20 + 2(768)x^{-3} = 20 + \frac{1536}{x^3}>0(x>0)(true)
+    \]
+    \textbf{Conclusion:} The dimensions that minimize the cost are base side $x \approx 3.374$ m and height $h \approx 2.811$ m.
+\end{itemize}
 \pagebreak
