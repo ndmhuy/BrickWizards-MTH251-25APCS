@@ -11,6 +11,42 @@ where $a$ and $b$ are real parameters.
 \end{enumerate}
 
 \subsection*{Strategy}
-\subsection*{Solution}
 
+\subsection*{Solution}
+\textbf{(a) Computing the limits}
+\begin{itemize}
+    \item $\displaystyle \lim_{x \to 1} \frac{x^2-1}{x-1}$
+    \[ \lim_{x \to 1} \frac{x^2-1}{x-1} = \lim_{x \to 1} \frac{(x-1)(x+1)}{x-1} = \lim_{x \to 1} x+1 = 2 \]
+    \item $\displaystyle \lim_{x \to 0} \frac{\sin(bx)}{x}$ \\
+    \textbf{Case 1: $b = 0$}
+    \[ \lim_{x \to 0} \frac{\sin(bx)}{x} = \lim_{x \to 0} \frac{0}{x} = 0 \]
+    \textbf{Case 2: $b \neq 0$}
+    \[ \lim_{x \to 0} \frac{\sin(bx)}{x} = \lim_{x \to 0} \frac{\sin(bx)}{bx/b} \]
+    Let $u = bx$. As $\displaystyle \lim_{x \to 0} u = 0$, then:
+    \[ \lim_{x \to 0} \frac{\sin(bx)}{bx/b} = \lim_{u \to 0} \frac{b\sin(u)}{u} = b\lim_{u \to 0} \frac{\sin(u)}{u} = b \]
+    In the end, whether $b = 0$ or $b \neq 0$, we always obtain:
+    \[ \lim_{x \to 0} \frac{\sin(bx)}{x} = b \]
+\end{itemize}
+
+\textbf{(b) Finding parameters for continuity}
+\begin{itemize}
+    \item For $f$ to be continuous at $x = 1$, we need:
+    \[ \lim_{x \to 1} f(x) = f(1) \Longleftrightarrow a = 2 \]
+    \item For $g$ to be continuous at $x = 0$, we need:
+    \[ \lim_{x \to 0} g(x) = g(0) \Longleftrightarrow b = 1\]
+\end{itemize}
+
+\textbf{(c) Graphs and patching}
+\begin{itemize}
+    \item \textbf{Graph of f:} With $a=2$, $f(x) = x+1$ for all $x$. The original expression $\frac{x^2-1}{x-1}$ represents the line $y=x+1$ with a "hole" (removable discontinuity) at $(1,2)$. Setting $f(1)=2$ simply "plugs" this hole, making the line unbroken.
+    \item \textbf{Graph of g:} With $b=1$, $g(x) = \frac{\sin x}{x}$. This is the classic sinc function. It has a hole at $x=0$ because the expression is undefined there. Defining $g(0)=1$ fills this hole, connecting the left and right branches smoothly.
+\end{itemize}
+
+\textbf{(d) Continuity vs. Differentiability}
+Changing the value of a function at a single point can only fix \textbf{removable discontinuities} (holes). It cannot fix geometric "kinks" or "corners".
+\begin{itemize}
+    \item Differentiability requires the existence of the limit of the difference quotient (the slope).
+    \item If the left-hand derivative (slope coming from left) and right-hand derivative (slope coming from right) are different (e.g., $|x|$ at 0), there is a sharp corner.
+    \item Adjusting the function value $f(c)$ moves the point up or down but does not change the slope of the curve approaching that point. Therefore, you cannot "smooth out" a sharp corner just by defining a point; the derivatives themselves must match.
+\end{itemize}
 \pagebreak

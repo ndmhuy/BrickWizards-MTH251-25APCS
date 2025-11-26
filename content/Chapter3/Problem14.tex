@@ -13,4 +13,64 @@ A solid is obtained by rotating the region bounded by $y=x^{2}$, $y=0$, and $x=1
 
 \subsection*{Strategy}
 \subsection*{Solution}
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-0.5, xmax=2.5,
+        ymin=-0.5, ymax=1.5,
+        width=0.6\textwidth,
+        height=0.6\textwidth
+    ]
+        % Plot y = x^2
+        \addplot[name path=A, blue, thick, domain=0:1] {x^2};
+        
+        % Plot y = 0 (x-axis)
+        \addplot[name path=B, black, thick, domain=0:1] {0};
+        
+        % Plot x = 1
+        \addplot[black, thick] coordinates {(1,0) (1,1)};
+
+        % Shade the region
+        \addplot[gray!30] fill between[of=A and B];
+        \node at (axis cs:0.7, 0.2) {Region};
+
+        % Draw Axis of Rotation for (b)
+        \addplot[red, dashed, thick] coordinates {(2,-0.5) (2,1.5)};
+        \node[red, right] at (axis cs:2, 0.8) {Axis $x=2$};
+        
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+\textbf{(c) Volume about the x-axis (Disk Method)}
+Since we are rotating about the x-axis, the cross-section at $x$ is a disk with radius $R(x) = x^2$.
+\[ V_a = \int_{0}^{1} \pi [R(x)]^2 dx = \pi \int_{0}^{1} (x^2)^2 dx \]
+Computing the integral:
+\[ V_a = \pi \int_{0}^{1} x^4 dx = \pi \left[ \frac{x^5}{5} \right]_{0}^{1} = \pi \left( \frac{1}{5} - 0 \right) = \boxed{\frac{\pi}{5}} \]
+
+\textbf{(d) Volume about the line x=2 (Shell Method)}
+We use cylindrical shells with thickness $dx$.
+\begin{itemize}
+    \item \textbf{Radius ($r$):} The distance from the slice at $x$ to the axis $x=2$ is $r = 2 - x$.
+    \item \textbf{Height ($h$):} The height of the function at $x$ is $h = x^2$.
+\end{itemize}
+The volume formula is $V = \int_{a}^{b} 2\pi r h \, dx$.
+\[ V_b = \int_{0}^{1} 2\pi (2-x)(x^2) dx \]
+Evaluating the integral:
+\[ V_b = 2\pi \int_{0}^{1} (2x^2 - x^3) dx \]
+\[ V_b = 2\pi \left[ \frac{2x^3}{3} - \frac{x^4}{4} \right]_{0}^{1} \]
+\[ V_b = 2\pi \left( \left(\frac{2}{3} - \frac{1}{4}\right) - 0 \right) = 2\pi \left( \frac{8-3}{12} \right) = 2\pi \left(\frac{5}{12}\right) = \boxed{\frac{5\pi}{6}} \]
+
+\textbf{(e) Comparison of Methods}
+\begin{itemize}
+    \item \textbf{Case (a):} The Disk method was very convenient because the rotation axis ($y=0$) was a boundary of the region, and the function $y=x^2$ was explicitly given. Using shells here would require integrating with respect to $y$ (horizontal shells), involving $x=\sqrt{y}$, which is slightly more complex.
+    \item \textbf{Case (b):} The Shell method was convenient because we could continue using the variable $x$. If we used the Washer method (slices perpendicular to $x=2$, i.e., horizontal $dy$), we would need:
+    \begin{itemize}
+        \item Outer radius $R_{out} = 2 - 0 = 2$ (distance from axis to y-axis).
+        \item Inner radius $R_{in} = 2 - \sqrt{y}$ (distance from axis to curve).
+    \end{itemize}
+    The integral would be $\pi \int_0^1 (2^2 - (2-\sqrt{y})^2) dy$, which involves more algebra to expand.
+    \item \textbf{Conclusion:} The shell method is generally better when rotating about vertical lines for functions given as $y=f(x)$, as it avoids solving for $x$ and dealing with potentially complicated inverse functions.
+\end{itemize}
 \pagebreak
