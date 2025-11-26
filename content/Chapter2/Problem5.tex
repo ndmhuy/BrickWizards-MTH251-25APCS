@@ -10,5 +10,154 @@ Let
 \end{enumerate}
 
 \subsection*{Strategy}
+
+\begin{enumerate}[label = (\alph*)] 
+
+    \item We apply the limit definition of the derivative: \\
+    The \textbf{derivative of a function $f$ at a number $a$}, denoted by $f^{\prime}(a)$, is 
+    \begin{displaymath}
+        f^{\prime}(a) = \lim_{x \to a} \frac{f(x) - f(a)}{x - a}
+    \end{displaymath}
+    
+    \item We compute $k^{\prime}(x)$ at $x$ = 2 using the limit definition of the derivative by considering the left-hand limit and right-hand limit. These two limits are not equal to each other, thus k is not differentiable at $x$ = 2.
+    
+    \item The visual evidence in the graphs confirms the failure of differentiability: Figure \ref{fig:h_graph_tikz} (graph of $h(x)$) exhibits an infinite slope (vertical tangent), while Figure \ref{fig:k_graph_tikz} (graph of $k(x)$) displays two conflicting slopes (a sharp corner).
+    
+    \item We focus on the behavior of $h$ at $x$ = 0 and $k$ at $x$ = 2 to spot out the difference between continuity and differentiability.
+\end{enumerate}
 \subsection*{Solution}
+\begin{enumerate}[label = (\alph*)] 
+    \item For an arbitrary $a$ > 0, by applying the \textit{limit definition} of the derivative, we have:
+    \begin{equation*}
+    \begin{split}
+    h^{\prime}(a) & = \lim_{x\to a} \frac{h(x) - h(a)}{x - a} \\
+    & = \lim_{x\to a} \frac{\sqrt{x} - \sqrt{a}}{x - a} \\
+    & = \lim_{x\to a} \frac{(\sqrt{x} - \sqrt{a})(\sqrt{x} + \sqrt{a})}{(x - a)(\sqrt{x} + \sqrt{a})} \quad \text{(Multiply by Conjugate)} \\
+    & = \lim_{x\to a} \frac{x - a}{(x - a)(\sqrt{x} + \sqrt{a})} \\
+    & = \lim_{x\to a} \frac{1}{\sqrt{x} + \sqrt{a}} \\
+    & = \frac{1}{\sqrt{a} + \sqrt{a}} \\
+    & = \frac{1}{2\sqrt{a}}
+    \end{split}
+    \end{equation*}
+    Hence, \[h^{\prime}(a) = \frac{1}{2\sqrt{a}}\]
+
+    \item To compute $k^{\prime}(x)$ at $x$ = 2, We consider the following limits: 
+    \begin{itemize}
+        \item \textbf{Right-hand derivative} \\
+        In this case, $x-2 > 0$, so $k(x) = x - 2$.
+        We have:
+        \begin{equation*}
+        \begin{split}
+            k^{\prime}(2^+) &= \lim_{x\to 2^+} \frac{k(x) - k(2)}{x-2} \\
+            &= \lim_{x\to 2^+} \frac{(x-2) - 0}{x-2} \\
+            &= \lim_{x\to 2^+} 1 \\
+            &= 1 \\
+        \end{split}
+        \end{equation*}
+        Hence, \begin{equation}
+        k^{\prime}(2^+) = 1 
+        \end{equation}
+        \item \textbf{Left-hand derivative} \\
+        In this case, $x-2 < 0$, so $k(x) = 2 - x$.
+        We have:
+        \begin{equation*}
+        \begin{split}
+            k^{\prime}(2^-) &= \lim_{x\to 2^-} \frac{k(x) - k(2)}{x-2} \\
+            &= \lim_{x\to 2^-} \frac{(2-x) - 0}{x-2} \\
+            &= \lim_{x\to 2^-} -1 \\
+            &= -1 \\
+        \end{split}
+        \end{equation*}
+        Hence, \begin{equation}
+        k^{\prime}(2^-) = -1
+        \end{equation}
+    \end{itemize}
+    From (1) and (2), we observe that $k^{\prime}(2^+) \neq k^{\prime}(2^-)$. Thus, $f$ is not differentiable at $x$ = 2.
+
+    \item \textbf{Graphs:}
+    \begin{figure}[H]
+    \centering
+    % --- Left Plot: h(x) = sqrt(x) ---
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Graph of $y = \sqrt{x}$},
+                xlabel={$x$},
+                ylabel={$y$},
+                xmin=0, xmax=5,
+                ymin=0, ymax=3,
+                axis lines=middle,
+                grid=major,
+            ]
+            \addplot[domain=0:5, thick, blue, samples = 1000] {sqrt(x)};
+            % Annotation for Vertical Tangent at (0,0)
+            \node[red, anchor=south west] at (axis cs: 0.5, 2.5) {Vertical Tangent at $x=0$};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Graph of $h(x)$ showing non-differentiability at $x=0$.}
+        \label{fig:h_graph_tikz}
+    \end{minipage}%
+    \hfill%
+    % --- Right Plot: k(x) = |x - 2| ---
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Graph of $y = |x - 2|$},
+                xlabel={$x$},
+                ylabel={$y$},
+                xmin=-1, xmax=5,
+                ymin=0, ymax=3,
+                axis lines=middle,
+                grid=major,
+            ]
+            \addplot[domain=-1:5, thick, purple] {abs(x - 2)};
+            % Annotation for Sharp Corner at (2,0)
+            \node[red, anchor=north east] at (axis cs: 4.0, 2.8) {Sharp Corner at $x=2$};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Graph of $k(x)$ showing non-differentiability at $x=2$.}
+        \label{fig:k_graph_tikz}
+    \end{minipage}
+    \end{figure}
+    \vspace{0.5cm}
+    \textbf{Geometric interpretation:} \\
+    Based on the graphs, we observe that: 
+        \begin{itemize} 
+        \item The graph of $h(x)$ is smooth, without any sharp corners or cusps for any value of $x$ > 0. However, tangent line at the origin \((0,0)\) is a vertical line. Since a vertical line has an undefined slope, the function is not differentiable at $x$ = 0.
+        \item With $k(x)$, its graph is a straight line with a constant slope for all $x \neq 2$, indicating differentiability for all of these values. However, the graph has a sharp corner at \(x=2\), which means it is not differentiability at this point.
+        \end{itemize}
+    \item \textbf{Comparison of Behavior at the Points:}
+
+    \begin{itemize}
+        \item \textbf{Continuity Check:} \\
+        Both functions are continuous at their respective points.
+        \begin{itemize}
+            \item $h(x)$ at $x=0$: $\lim_{x \to 0^+} \sqrt{x} = 0 = h(0)$ (Continuous from the right).
+            \item $k(x)$ at $x=2$: $\lim_{x \to 2} |x - 2| = 0 = k(2)$.
+        \end{itemize}
+        \item \textbf{Differentiability Check:} Both functions are not differentiable at their respective points.
+        \begin{itemize}
+            \item $h(x)$ at $x=0$: We use the limit definition (from the right):
+             \begin{equation*}
+            \begin{split}
+            h'(0^+) &= \lim_{x \to 0^+} \frac{h(x) - h(0)}{x - 0} \\
+            &= \lim_{x \to 0^+} \frac{\sqrt{x} - 0}{x} \\
+            &= \lim_{x \to 0^+} \frac{1}{\sqrt{x}} = \mathbf{+\infty}
+            \end{split}
+            \end{equation*}
+            Since the limit is infinite, $h$ is not differentiable at $x=0$.
+            \item $k(x)$ at $x=2$: Not able to differentiate due to the slopes being unequal ($k'(2^+) \ne k'(2^-)$).
+        \end{itemize}
+    \end{itemize}
+    
+    \textbf{Conclusion:}
+    The behavior of these two functions demonstrates the difference between the two concepts:
+    \begin{itemize}
+        \item $\mathbf{Differentiability \implies Continuity}$.
+        \item $\mathbf{Continuity \not\implies Differentiability}$.
+    \end{itemize}
+    A function can be connected (continuous) but still not be smooth (differentiable), as seen by the existence of a vertical tangent ($\sqrt{x}$) or a sharp corner ($|x-2|$).
+\end{enumerate}
 \pagebreak
