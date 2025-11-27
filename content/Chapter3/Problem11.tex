@@ -9,5 +9,101 @@ Let $f(x)=x^{2}+2x$ on the interval $[0, a]$, where $a>0$ is a constant.
 \end{enumerate}
 
 \subsection*{Strategy}
+\begin{enumerate}[label = (\alph*)]
+    \item To construct the right-endpoint Riemann sum $R_n$, we first construct the $n$ equal subintervals. We then calculate the area for each rectangle in the corresponding subinterval and express $R_n$ as the sum of these areas.
+    \item To rewrite $R_n$, we use mathematical operations to find out the formula of $R_n$.
+    \item We first compute $\lim_{n\to\infty} R_{n}$. Next, we calculate the antiderivative computation of $\int_0^af(x)dx$ and illustrate that the values computed are the same.
+    \item We express the final expression geometrically and show the relationship between the area and the parameter a.
+\end{enumerate}
 \subsection*{Solution}
+\begin{enumerate}[label = (\alph*)]
+
+    \item \textbf{Construction and expression of $\mathbf{R_n}$}
+    \begin{itemize}
+    \item \textbf{Construction:} \\
+    To start with, we construct the $n$ equal subintervals. Since there are $n$ equal subintervals in the interval $[0, a]$, the width of each rectangle in the corresponding subinterval is: 
+    \begin{equation*}
+        \Delta x = \frac{a - 0}{n} = \frac{a}{n}
+    \end{equation*}
+    We denote $x_i$ as the endpoint of the subintervals. The $n$ equal subintervals can be displayed as: 
+    \[[x_0, x_1], [x_1, x_2],...,[x_{n-1}, x_n]\]
+    \centerline {Where: \(x_i = x_0 + i\Delta x = \frac{ia}{n}\)} \\
+    Since we are dealing with right-endpoint, the height of the rectangle in the subinterval $[x_{i-1}, x_i]$ is $f(x_i)$. \\
+    Therefore, we achieve the area of the $i^{th}$ rectangle as: \(f(x_i)\Delta x\). \\
+    \item \textbf{Expression:} \\
+    Taking the sum of all of the rectangle areas gives us: 
+    \begin{equation*}
+    \begin{split}
+        R_n &= \sum_{i=1}^n f(x_i)\Delta x \\
+        &= \sum_{i=1}^n (x_i^2 + 2x_i)\frac{a}{n} \\
+        &= \sum_{i=1}^n [(\frac{ia}{n})^2 + 2\frac{ia}{n}]\frac{a}{n} \\
+        &= \sum_{i=1}^n (\frac{i^{2}a^{3} + 2ia^{2}n}{n^3})
+    \end{split}
+    \end{equation*}
+    Hence,
+    \begin{center} \fbox{$\displaystyle R_n = \sum_{i=1}^n (\frac{i^{2}a^{3} + 2ia^{2}n}{n^3})$} \end{center}
+    \end{itemize}
+
+    \item \textbf{Rewriting $\mathbf{R_n}$} \\
+    To rewrite $R_n$, we first notice that the formula of $R_n$ contains the constant \(\displaystyle\frac{a^2}{n^2}\), which can be put outside the sigma notation.\\
+    We rewrite $R_n$ as: \[R_n = \frac{a^2}{n^2}\sum_{i=1}^n (\frac{i^{2}a}{n} + 2i)\]
+    Let \[S = \sum_{i=1}^n (\frac{i^{2}a}{n} + 2i)\] 
+    \begin{equation}
+    \Longrightarrow R_n = \frac{a^2}{n^2}\cdot S
+    \end{equation}
+    We calculate $S$ :
+    \begin{align*}
+        S &= \sum_{i=1}^n (\frac{i^{2}a}{n} + 2i) \\
+        &= \frac{a}{n}\sum_{i=1}^n i^2 + 2\sum_{i=1}^ni\\
+    \end{align*}
+    By applying the formulas:  \[\sum_{k=1}^n k = \frac{n(n+1)}{2}\quad; \quad\sum_{k=1}^n k^2 = \frac{n(n+1)(2n+1)}{6}\], we get: \\
+    \begin{align*}
+        S &= \frac{a}{n} \cdot \frac{n(n+1)(2n+1)}{6} + 2\cdot \frac{n(n+1)}{2} \\
+        \iff S &= \frac{a(n+1)(2n+1)}{6} + n(n+1) 
+    \end{align*}
+    Substituting the formula of S into (3) gives us:
+    
+    \begin{center} \fbox{$\displaystyle R_n = \frac{a^3 (n+1)(2n+1)}{6n^2} + \frac{a^2 (n+1)}{n}$} \end{center}
+
+    \item \textbf{Limit computation and verification:}
+    \begin{itemize} 
+    \item \textbf{Limit calculation:}
+    \begin{align*}
+        \lim_{n\to \infty} R_n &= \lim_{n\to \infty} [\frac{a^3 (n+1)(2n+1)}{6n^2} + \frac{a^2 (n+1)}{n} ] \\
+        &= \lim_{n\to \infty} [\frac{a^3 (n+1)(2n+1) + a^2 6n(n+1)}{6n^2} ] \\
+        &= \lim_{n\to \infty} [\frac{(2a^3 + 6a^2)n^2 + (3a^3 + 6a^2)n + a^3}{6n^2} ] \\
+        &= \lim_{n\to \infty} [\frac{(2a^3 + 6a^2) + \frac{3a^3 + 6a^2}{n} + \frac{a^3}{n^2}}{6} ] \\
+        \intertext{Using the limit property $\displaystyle\lim_{n \to \infty} \frac{c}{n^k} = 0$ for $k > 0$, we get: } \\
+        \lim_{n\to \infty} R_n &= \lim_{n\to \infty} [\frac{(2a^3 + 6a^2) + 0 + 0}{6} ] \\
+        &= \lim_{n\to \infty} (\frac{a^3}{3} + a^2) \\
+        &= \frac{a^3}{3} + a^2 
+    \end{align*}
+    Thus, \begin{equation}
+    \lim_{n\to \infty} R_n = \frac{a^3}{3} + a^2
+    \end{equation}
+    \item \textbf{Antiderivative computation:}
+    \begin{align*}
+        \int_0^af(x)dx &= \int_0^a (x^2 + 2x)dx \\
+        &= \left. \frac{x^3}{3} + x^2 \right|_{x=0}^{x=a}\\
+    \end{align*}
+    \begin{equation}
+        \Longleftrightarrow \int_0^af(x)dx  = \frac{a^3}{3} + a^2
+    \end{equation}
+    \item \textbf{Verification:}
+    From (4) and (5), it can be seen that the Riemann sum limit matches the antiderivative result. Hence, the computation is verified.
+    \end{itemize}
+    
+    \item \textbf{Interpretation and Parameter Dependence:}
+    The final expression $A(a) = \frac{a^3}{3} + a^2$ represents the \textbf{exact area} under the curve $f(x)=x^2+2x$ from $x=0$ to $x=a$.
+    
+    \begin{itemize}
+        \item \textbf{Dependence on $\mathbf{a}$:} The area $A(a)$ is a polynomial function of degree 3 in terms of the parameter $a$. This confirms that the area is highly sensitive to the width of the interval.
+    
+        \item \textbf{Doubling $\mathbf{a}$:} If we double the width of the interval from $a$ to $2a$, the new area is $A(2a)$:
+        \[
+        A(2a) = \frac{(2a)^3}{3} + (2a)^2 = \frac{8a^3}{3} + 4a^2
+        \]
+        Since $A(2a) \neq 2 \cdot A(a)$, doubling the width of the interval more than doubles the area due to the cubic and quadratic growth terms.
+    \end{itemize}
+\end{enumerate}
 \pagebreak
