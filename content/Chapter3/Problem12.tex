@@ -3,12 +3,64 @@ Let
 \[F(x)=\displaystyle\int_{0}^{x}\sqrt{t^{4}+2}dt, \quad x\in\mathbb{R}\]
 
 \begin{enumerate}[label=(\alph*)]
-    \item Use the Newton-Leibniz formula to compute $F^{\prime}(x)$.
-    \item Find the average value of the function $f(x)=x^{3}+2x$ on the interval $[-1, 2]$.
-    \item Find all points $c$ in $[-1,2]$ such that $f(c)$ equals the average value from part (b). Justify using the Mean Value Theorem for integrals.
-    \item In a physical context where $f(x)$ represents a velocity, explain the meaning of the average value of $f$ on $[-1,2]$ and of the points $c$ found above.
+    \item Use the Newton-Leibniz formula to compute $F'(x)$.
+    \item Find the average value of the function $f(x) = x^3 + 2x$ on the interval $[-1, 2]$.
+    \item Find all points $c$ in $[-1, 2]$ such that $f(c)$ equals the average value from part (b). Justify using the Mean Value Theorem for integrals.
+    \item In a physical context where $f(x)$ represents a velocity, explain the meaning of the average value of $f$ on $[-1, 2]$ and of the points $c$ found above.
 \end{enumerate}
 
 \subsection*{Strategy}
+
+\begin{itemize}
+    \item \textbf{(a):} A straightforward question, we'll use Newton-Leibniz theorem since $g(x) = \sqrt{x^4 + 2}$ is continuous on $\mathbb{R}$.
+    \item \textbf{(b):} Given that a function $f$ is continuous in an interval $[a, b]$, the average value of $f$ in $[a, b]$ is $\frac{1}{b - a}\int_a^b f(x) dx$.
+    \item \textbf{(c):} Check if there exists such number $c$, then check the conditions as if we are using mean value theorem for a regular function and reflect those results to integrals before drawing a conclusion.
+    \item \textbf{(d):} $c$ is linked to $f_{average}(x)$ on $[-1, 2]$ so we'll learn what $f_{average}(x)$ is first, then based on that, draw a conclusion about what $c$ is.
+\end{itemize}
+
 \subsection*{Solution}
+
+\textbf{(a)} Let $g(x) = \sqrt{x^4 + 2}$ and G(x) is its antiderivative.
+
+Since $D_{g} = \mathbb{R}$ and g is an elementary function, g is continuous in $\mathbb{R}$, therefore g is integrable in $\mathbb{R}$.
+
+Apply Newton-Leibniz theorem:
+\[ F(x) = \int_0^x g(t) dt = G(x) - G(0) = G(x) - c \]
+
+Hence 
+\[ F'(x) = g(x) = \sqrt{x^4+2} \]
+
+\textbf{(b)} In $[-1, 2]$: 
+\[ f_{\text{average}}(x) = \frac{\int_{-1}^{2} (x^3 + 2x) dx}{2 - (-1)} \]
+
+\[ = \frac{1}{3} \left[ \frac{x^4}{4} + x^2 \right]_{-1}^{2} \]
+
+\[ = \frac{9}{4} \]
+
+\textbf{(c)} Assume that there is a number $c \in [-1, 2]$ such that 
+\[ f(c) = \frac{9}{4} \Leftrightarrow c^3 + 3c = \frac{9}{4} \]
+
+\[ \Leftrightarrow c \approx 0.83446 \]
+
+So, there is actually a number $c \in [-1, 2]$ that satisfies.
+
+\
+
+Justify using the mean value theorem for integral:
+
+- Condition check: $f(x)$ is continuous on $[-1; 2]$, and $\int f(x) = \frac{x^4}{4} + x^2 + c$ is an elementary function, so $\int f(x)$ is also continuous on $[-1; 2]$, which means $\int f(x)$ is differentiable on $[-1; 2]$.
+
+- Result check: $c \approx 0.83446 \in [-1, 2]$ and 
+\[ f(c) = \frac{\int_{-1}^{2} f(x) dx}{2 - (-1)} \]
+
+$\Rightarrow$ Conclusion: Using MVT for the integral is okay as long as the conditions are met, that is, $f(x)$ must be continuous in the interval.
+
+\textbf{(d)} If $f(x)$ represents a velocity
+
+\[ \Rightarrow \int_{-1}^{2} f(x) dx \text{ is the total distance traveled during interval } [-1, 2] \]
+
+So $f_{\text{average}}(x) = \dfrac{\int_{-1}^{2} f(x) dx}{2-(-1)}$ is the average displacement traveled each second in the interval $[-1, 2]$, or the average velocity.
+
+And $c$ represents the median point in time where the instant velocity is equal to the average velocity.
+
 \pagebreak

@@ -1,14 +1,62 @@
 \subsection{Problem 13. Area between curves and splitting the region}
 Consider the curves
 \[y=x^{3}, \quad y=x, \quad y=-2\]
-
 \begin{enumerate}[label=(\alph*)]
     \item Sketch the three curves on the same coordinate plane. Determine all intersection points relevant to the bounded region enclosed by these curves.
     \item Express the area of the shaded region (bounded by the three curves) as a sum of one or more definite integrals. Clearly justify the limits and integrands you choose.
     \item Evaluate the area exactly.
     \item Discuss how the setup would change if you integrated with respect to $y$ instead of $x$. Which method seems more natural here, and why?
 \end{enumerate}
-
 \subsection*{Strategy}
+
+\begin{itemize}
+    \item \textbf{(a):} Find the intersection points by using the x-coordinate equation of intersection.
+    \item \textbf{(b)} and \textbf{(c):} The area is devided to 2 parts, the first part is bounded by $y = x$ and $y = -2$, limited by $x = -\sqrt[3]{2}$ and $x = -2$, the second part is bounded by $y = x$ and $y = x^3$, limited by $x = -\sqrt[3]{2}$ and $x = 1$, since the area is always positive, we use absolute value for the integrals to compute the exact result.
+    \item \textbf{(d):} Work similarly to part \textbf{(b)}, except this time we work with respect to y so there are some adjustments.
+\end{itemize}
+
 \subsection*{Solution}
+
+\textbf{(a)} Intersection points of each pair of curves accordingly:
+
+\begin{itemize}
+    \item $y = x^3$ and $y = x$:
+    \[ x^3 - x \Leftrightarrow x(x^2 - 1) = 0 \]
+    \[ \Leftrightarrow \begin{cases} x = 0 \\ x = -1 \\ x = 1 \end{cases} \]
+    
+    Intersection points: $(0, 0)$, $(1, 1)$, $(-1, -1)$
+    
+    \item $y = x$ and $y = -2$:
+    \[ x = -2 \]
+    
+    Intersection point: $(-2, -2)$
+    
+    \item $y = -2$ and $y = x^3$:
+    \[ x^3 = -2 \Leftrightarrow x = -\sqrt[3]{2} \]
+    
+    Intersection point: $(-\sqrt[3]{2}, -2)$
+\end{itemize}
+
+\textbf{(b)} + \textbf{(c)} On $[-2, -\sqrt[3]{2}]$, the area is bounded by 3 lines/curves: $y = x$, $y = -2$ and $x = -\sqrt[3]{2}$
+
+\[ \Rightarrow S_1 = \int_{-2}^{-\sqrt[3]{2}} |x + 2| \, dx \]
+
+On $[-\sqrt[3]{2}, 1]$, the area is bounded by 2 curves/lines: $y = x$ and $y = x^3$
+
+\[ \Rightarrow S_2 = \int_{-\sqrt[3]{2}}^{1} |x^3 - x| \, dx \]
+
+So 
+
+\[ S = S_1 + S_2 = \left(\frac{\sqrt[3]{4}}{2} - 2\sqrt[3]{2} + 2\right) + \left(\frac{3}{4} - \frac{1}{\sqrt[3]{2}} + \frac{1}{\sqrt[3]{4}}\right) \]
+
+\[ = \frac{11}{4} - \frac{3\sqrt[3]{2}}{2} \approx 0.86 \]
+
+\textbf{(d)}  In respect to $y$, the area is bounded by $y = x \Leftrightarrow x = y$, $y = x^3 \Leftrightarrow x = \sqrt[3]{y}$, $y = -2$ and $y = 1$
+
+\[ \Rightarrow S = \int_{-2}^{1} |y - \sqrt[3]{y}| \, dy \]
+
+\[ = \frac{11}{4} - \frac{3\sqrt[3]{2}}{2} \approx 0.86\]
+
+\textbfAs we can see, integrating with respect to $y$ let us work on 2 curves/lines only, so no need to divide cases, and there are no complex limits like $-\sqrt[3]{2}$. Hence it's simpler and more natural than integrating with respect to $x$.
+
 \pagebreak
