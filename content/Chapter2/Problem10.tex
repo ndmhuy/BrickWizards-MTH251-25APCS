@@ -12,4 +12,32 @@ Let $f(x)=\ln(1+x)$, defined for $x>-1$.
 
 \subsection*{Strategy}
 \subsection*{Solution}
+\begin{enumerate}[label=(\alph*)]
+\item The Mean Value Theorem states that if a function $f(x)$ is continuous on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$, then there exists at least one number $c$ in $(a, b)$ such that:
+$$f'(c) = \frac{f(b) - f(a)}{b - a}$$
+
+\item Use the MVT to prove that for $x > -1$, $\dfrac{x}{1+x} \le \ln(1+x) \le x$\\
+For $x=0$, it is easy to check that the inequalities are right.
+\\
+For $x\neq 0$, we have: $f'(t) = \dfrac{1}{1+t}$. 
+\\Applying the MVT for $x$ and $0$, there exists $c$ in the open interval between $x$ and $0$ such that:
+$$\frac{f(x) - f(0)}{x - 0} = f'(c) \implies \ln(1+x) = \frac{x}{1+c} $$
+
+\begin{itemize}
+\item For $x>0$, we have $0<c<x \implies 1<1+c<1+x$ $$\implies \frac{x}{1+x}<\frac{x}{1+c}<x \quad \text{(Q.E.D)}$$
+\item For $x<0$, we have $x<c<0 \implies 1+x<1+c<1$ $$\implies \frac{x}{1+x}<\frac{x}{1+c}<x \quad \text{(Q.E.D)}$$
+\end{itemize}
+
+\item
+The graph of $y = \ln(1+x)$ lies between the graph of the line $y = x$ and the graph of the function $y = \dfrac{x}{1+x}$ for all $x > -1$. All three curves meet at $(0, 0)$.
+
+\item
+These inequalities provide a simple algebraic range for the value of $\ln(1+x)$, allowing for estimations without a calculator. For example:\\
+$$0.\overline{09}=\frac{0.1}{1+0.1}<ln(1.1)<0.1$$
+And indeed $ln(1.1)\approx0.095310$
+\\
+Bounding Errors: The inequality is crucial in numerical analysis for bounding the error of the linear approximation of $\ln(1+x)$. For $x > 0$, the error of the approximation $\ln(1+x) \approx x$ is:
+$$\text{Error} = x-ln(1+x)\le x-\frac{x}{1+x}=\frac{x^2}{x+1}$$
+which approaches 0 when x approaches 0, confirming that the approximation is quite accurate near $x=0$.
+\end{enumerate}
 \pagebreak
