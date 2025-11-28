@@ -11,5 +11,99 @@ and $f(x)=0$ for $x<0$. Assume $f$ is the probability density function of a nonn
 \end{enumerate}
 
 \subsection*{Strategy}
+
+To solve this problem, we will proceed as follows:
+
+\begin{itemize}
+    \item \textbf{Part (a):} To find the constant $C$, we set up the normalization condition $\int_{0}^{\infty} f(x) \, dx = 1$. We will evaluate this improper integral using substitution. This simplifies the integrand into a basic exponential form.
+    
+    \item \textbf{Part (b):} To compute the expected value, we will use \textbf{integration by parts}.
+    
+    \item \textbf{Part (c):} The probability $P(X > 1)$ corresponds to the integral of the density function from $1$ to $\infty$. We will use the antiderivative found in part (a) and apply the Fundamental Theorem of Calculus with the limits $[1, \infty)$.
+    
+    \item \textbf{Part (d):} We will analyze the decay rate of the term $e^{-x^2/2}$ as $x \to \infty$. We will discuss how this "Gaussian tail" decays faster than any polynomial power, ensuring that both the total probability integral and the expectation integral converge to finite values.
+\end{itemize}
 \subsection*{Solution}
+\subsection*{Solution}
+
+\textbf{a)} Determine the constant $C$.
+We compute the indefinite integral $\int x e^{-\frac{x^2}{2}} \, dx$.
+Let $u = -\frac{x^2}{2} \implies du = -x \, dx \implies dx = -\frac{du}{x}$.
+\begin{align*}
+    \int x e^{-\frac{x^2}{2}} \, dx &= \int -e^u \, du \\
+    &= -e^u + K \\
+    &= -e^{-\frac{x^2}{2}} + K
+\end{align*}
+To find $C$, we use the normalization condition $\int_{0}^{\infty} f(x) \, dx = 1$:
+\begin{align*}
+    \lim_{t \to \infty} \int_{0}^{t} C \cdot x e^{-\frac{x^2}{2}} \, dx &= 1 \\
+    C \cdot \lim_{t \to \infty} \left( -e^{-\frac{x^2}{2}} \Big|_{0}^{t} \right) &= 1 \\
+    C \cdot \lim_{t \to \infty} \left( -e^{-\frac{t^2}{2}} - (-e^0) \right) &= 1 \\
+    C \cdot (0 + 1) &= 1 \implies \mathbf{C = 1}.
+\end{align*}
+
+\vspace{1em}
+
+\textbf{b)} Compute $E[X]$.
+We have $E[X] = \int_{0}^{\infty} x f(x) \, dx$. Since $C=1$, $f(x) = x e^{-x^2/2}$.
+Consider the integral up to $t$: $I(t) = \int_{0}^{t} x \cdot (x e^{-\frac{x^2}{2}}) \, dx$.
+Using integration by parts:
+\begin{align*}
+    \text{Let } u &= x \implies du = dx \\
+    dv &= x e^{-\frac{x^2}{2}} \, dx \implies v = -e^{-\frac{x^2}{2}}
+\end{align*}
+Then:
+\[
+    I(t) = -x e^{-\frac{x^2}{2}} \Big|_{0}^{t} + \int_{0}^{t} e^{-\frac{x^2}{2}} \, dx \quad (*).
+\]
+
+\noindent \textbf{1. Analyze the first term (Boundary term):}
+We consider the limit using L'Hôpital's rule:
+\begin{align*}
+    \lim_{t \to \infty} \left( -t e^{-\frac{t^2}{2}} \right) &= \lim_{t \to \infty} \frac{-t}{e^{\frac{t^2}{2}}} \quad \left( \frac{\infty}{\infty} \right) \\
+    &\stackrel{L'H}{=} \lim_{t \to \infty} \frac{-1}{t e^{\frac{t^2}{2}}} = 0.
+\end{align*}
+
+\noindent \textbf{2. Analyze the second term (Gaussian integral):}
+We need to compute $\int_{0}^{\infty} e^{-\frac{x^2}{2}} \, dx$.
+We know the standard Gaussian integral $\int_{-\infty}^{\infty} e^{-u^2} \, du = \sqrt{\pi}$.
+Let $g(x) = e^{-\frac{x^2}{2}}$. Note that $g(-x) = g(x)$, so $g$ is an even function.
+\[
+    \int_{0}^{\infty} e^{-\frac{x^2}{2}} \, dx = \frac{1}{2} \int_{-\infty}^{\infty} e^{-\frac{x^2}{2}} \, dx.
+\]
+Let substitution $v = \frac{x}{\sqrt{2}} \implies dx = \sqrt{2} \, dv$.
+\[
+    \frac{1}{2} \int_{-\infty}^{\infty} e^{-v^2} \sqrt{2} \, dv = \frac{\sqrt{2}}{2} \int_{-\infty}^{\infty} e^{-v^2} \, dv = \frac{\sqrt{2}\sqrt{\pi}}{2} = \frac{\sqrt{2\pi}}{2} = \sqrt{\frac{\pi}{2}}.
+\]
+
+\noindent \textbf{Conclusion for (b):}
+Substituting back into (*):
+\[
+    E[X] = \lim_{t \to \infty} I(t) = 0 + \sqrt{\frac{\pi}{2}} = \mathbf{\sqrt{\frac{\pi}{2}}}.
+\]
+
+\vspace{1em}
+
+\textbf{c)} Compute $P(X > 1)$.
+\begin{align*}
+    P(X > 1) &= \int_{1}^{\infty} f(x) \, dx \\
+    &= \lim_{t \to \infty} \int_{1}^{t} x e^{-\frac{x^2}{2}} \, dx \\
+    &= \lim_{t \to \infty} \left( -e^{-\frac{x^2}{2}} \right) \Bigg|_{1}^{t} \\
+    &= 0 - \left( -e^{-\frac{1}{2}} \right) \\
+    &= \mathbf{e^{-1/2}}.
+\end{align*}
+\textbf{d)} \quad \textbf{Discussion on tail behavior and convergence:}
+
+The function $f(x) = x e^{-x^2/2}$ is dominated by the Gaussian decay term $e^{-x^2/2}$ as $x \to \infty$.
+
+\begin{itemize}
+    \item \textbf{Rapid Decay:} The term $e^{-x^2/2}$ approaches zero much faster than any polynomial power of $x$ grows (i.e., faster than $x$, $x^2$, etc.). In mathematical terms, for any $n \ge 0$:
+    \[ \lim_{x \to \infty} x^n e^{-x^2/2} = 0. \]
+    
+    \item \textbf{Convergence of Total Probability:} For the total probability integral $\int_{0}^{\infty} f(x) \, dx$, the rapid decay ensures that the area under the curve is finite (equal to 1), making it a valid probability density function.
+    
+    \item \textbf{Convergence of Expected Value:} For the expected value $E[X] = \int_{0}^{\infty} x f(x) \, dx$, the integrand becomes $x^2 e^{-x^2/2}$. Even though the factor $x^2$ grows as $x$ increases, the exponential tail $e^{-x^2/2}$ suppresses this growth effectively, ensuring that the integral converges to a finite value (as calculated in part b).
+    
+    \item \textbf{Comparison:} If the tail decayed slowly (e.g., like a power law $1/x^2$), the expectation integral might diverge. The "Gaussian tail" guarantees the existence of not just the mean, but all higher-order moments.
+\end{itemize}
 \pagebreak
