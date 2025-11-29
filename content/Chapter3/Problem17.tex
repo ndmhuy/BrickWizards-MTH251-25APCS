@@ -1,13 +1,245 @@
 \subsection{Problem 17. Numerical integration: Trapezoidal and Simpson's Rules}
 Let $f(x)=\sqrt{1+x^{3}}$ on the interval $[0, 2]$.
-
 \begin{enumerate}[label=(\alph*)]
     \item Explain why there is no simple elementary antiderivative for $f(x)$.
     \item Approximate $\displaystyle\int_{0}^{2}f(x)dx$ using the Trapezoidal Rule with $n=4$ subintervals. Show your computations.
     \item Approximate the same integral using Simpson's Rule with $n=4$ subintervals and compare the two results.
     \item Discuss, based on the shape of the graph of $f$, which method you expect to be more accurate and why. How would you improve the accuracy further?
 \end{enumerate}
-
 \subsection*{Strategy}
+
+\begin{itemize}
+    \item \textbf{(a):} We can see the function inside the integral sign of I is a binomial function, normal ways to prove this antiderivative isn't elemental seems to be a massive work, so we reach out to Chebyshev Theorem, in which if the conditions are all not met, the antiderivative isn't elemental.
+    \item \textbf{(b):} Use Trapezoidal Rule with 4 sub-intervals.
+    \item \textbf{(c):} To use Simpson's Rule with 4 sub-intervals, or 5 points, calculate the area using 1/3 rule for 2 sets of 3 points in order 1-2-3 and 3-4-5.
+    \item \textbf{(d):} Simpson's rule works wonder in cases where the graph of the function is a curve, even better if it concaves upward or downward and/or has a highest degree of 3, while the Trapezoidal Rule calculate the area of small trapezoidals, it works better if the graph of the function is linear.
+\end{itemize}
+
 \subsection*{Solution}
+
+\textbf{(a)} Using Chebyshev's Theorem for
+\[ \int \sqrt{\left(1 + x^3\right)} dx = \int x^m \cdot (a + bx^n)^p dx \]
+Whereas $m = 0$; $a = 1$; $b = 1$; $n = 3$; $p = \frac{1}{2}$
+
+\begin{enumerate}[label=(\arabic*)]
+    \item $p \in \mathbb{Z} \Rightarrow$ not the case
+    \item $\dfrac{m+1}{n} = \dfrac{1}{3} \in \mathbb{Z} \Rightarrow$ wrong
+    \item $p + \dfrac{m+1}{n} \in \mathbb{Z} \Rightarrow$ not true as $p + \dfrac{m+1}{n} = \dfrac{5}{6}$
+\end{enumerate}
+
+Since none of the conditions above are met, $f(x)$ doesn't have a simple elemental antiderivative.
+
+\textbf{(b)} Divide the interval $[0, 2]$ to 4 sub-intervals:
+\[ [0, 0.5], [0.5, 1], [1, 1.5]\ \ and \ \ [1.5, 2] \]
+
+The length of each sub-interval is $\Delta x = 0.5$
+
+There we have $S_i = \Delta x \dfrac{1}{2}(f(\frac{i}{2}) + f(\frac{i+1}{2}))$
+
+Use the Trapezoidal Rule with 4 sub-intervals, we get:
+\[ \int_0^2 f(x) dx \approx \sum_{i=0}^{3} S_i = \frac{1}{2} \Delta x \cdot \sum_{i=0}^{3} (f(\frac{i}{2}) + f(\frac{i+1}{2})) \]
+
+On the other hand: 
+\begin{align*}
+f(0) &= 1 \\
+f(0.5) &= \sqrt{1.125} \\
+f(1) &= \sqrt{2} \\
+f(1.5) &= \sqrt{4.375} \\
+f(2) &= 3
+\end{align*}
+
+Thus $\int_0^2 f(x) dx \approx 3.2833$
+
+\textbf{(c)} Computing similarly to above, we have
+\[ T_i = \Delta x \cdot \frac{1}{3} \cdot \left(f(\frac{i-1}{2}) + 4f(\frac{i}{2}) + f(\frac{i+1}{2})\right) \]
+
+Use Simpson's Rule with 4 sub-intervals and 5 points:
+\[ \int_0^2 f(x) dx \approx \sum_{i} T_1 + T_3 \approx 3.2396 \]
+
+So the 2 results are actually not too far off from each other.
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-0.5, xmax=2.5,
+        ymin=-0.5, ymax=3.5,
+        width=0.6\textwidth,
+        height=0.5\textwidth,
+        samples=100
+    ]
+        % Plot f(x) = sqrt(1 + x^3)
+        \addplot[blue, thick, domain=0:2] {sqrt(1 + x^3)};
+        \node[blue] at (axis cs:1.5, 1.2) {$f(x) = \sqrt{1+x^3}$};
+        
+        % Mark the origin
+        \addplot[only marks, mark=*, mark size=2pt, black] coordinates {(0,0)};
+        
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\textbf{(d)} As the shape of $f(x)$ suggests, it concaves upward on $[0, 2]$ and is a curve. Simpson's Rule works well for such curves while the Trapezoidal Rule doesn't work so well as it is closer to the right number the more linear the shape of $f(x)$ looks and vice versa. To improve the accuracy, increase the number of sub-intervals, the more sub-intervals there are, the more accurate the result is.
+
+\textbf{* Chebyshev's Theorem about the condition of a binomial differential:}
+
+(Chebyshev's Theorem for short)
+
+The integral of a binomial differential 
+\[ I = \int x^m (a + bx^n)^p dx \quad , m, n, p \in \mathbb{Q} \backslash \{0\} \]
+is elementary if and only if at least one of the following expressions is an integer:
+\begin{enumerate}[label=(\arabic*)]
+    \item $p$
+    \item $\dfrac{m+1}{n}$
+    \item $p + \dfrac{m+1}{n}$
+\end{enumerate}
+
+\textbf{* Proof:}
+
+If one of the conditions above are met:
+
+\textbf{(1)} $p \in \mathbb{Z}$
+
+Let $k$ be the least common multiple of the denominators of $m$ and $n$, then m and n can be rewritten as:
+\[ m = \frac{m'}{k}; \quad n = \frac{n'}{k} \quad (\text{assume } k > 0 \& k \in \mathbb{Z}) \]
+
+Let $x = z^k$
+\[ \Rightarrow dx = kz^{k-1} dz \]
+
+Therefore $I = \int z^{m'} \cdot \left(a + b \cdot z^{n'}\right)^p \cdot k \cdot z^{k-1} dz$
+
+We observe: $m' \in \mathbb{Z}, \ n' \in \mathbb{Z}, \ p \in \mathbb{Z}, \ \ and \ \ k-1 \in \mathbb{Z}, $
+
+So in this case, $I$ is the integral of a rational function.
+
+Hence $I$ is elementary.
+
+\textbf{(2)} $\dfrac{m+1}{n} \in \mathbb{Z}$
+
+\
+
+Let $p = \dfrac{r}{t} \quad (r, t \in \mathbb{Z}) \Rightarrow p \cdot t = r$
+
+And $\dfrac{m+1}{n} = s \quad (s \in \mathbb{Z})$
+
+Let $a + bx^n = z^t$
+
+\[ \Rightarrow \begin{cases} dx = \dfrac{x^{1-n}}{bn} \cdot t \cdot z^{t-1)} dz \\ x = (\dfrac{z^t-a}{b})^\frac{1}{n} \end{cases}\]
+
+There we have: 
+\[ x^m dx = x^{m+1-n} \cdot \frac{tz^{t-1}}{bn} dz \]
+\[ = \frac{x^{n(s-1)}}{bn} \cdot tz^{t-1} dz \]
+\[ = \frac{1}{bn} \cdot (\frac{z^t - a}{b})^{s-1} \cdot tz^{t-1} dz \]
+
+Thus 
+\[ I = \int \frac{1}{bn} \left(\frac{z^t - a}{b}\right)^{s-1} \cdot tz^{t-1} \cdot z^r dz \]
+
+We observe: $t \in \mathbb{Z}$, $s-1 \in \mathbb{Z}$, $t-1 \in \mathbb{Z}$ and $r \in \mathbb{Z}$
+
+So in this case, $I$ is also the integral of a rational function.
+
+Hence $I$ is elementary.
+
+\
+
+\textbf{(3)} $\dfrac{m+1}{n} + p \in \mathbb{Z}$
+
+Let $k = m + np$
+
+We have $I = \int x^m \cdot x^{np} (a \cdot x^{-n} + b)^p dx = \int x^k (b + ax^{-n})^p dx$
+
+Since $\dfrac{k+1}{n} \in \mathbb{Z} \Rightarrow \dfrac{k+1}{-n} \in \mathbb{Z}$
+
+This returns to case (2) above.
+
+Hence $I$ is elementary.
+
+\textbf{* Explanation:}
+
+If $p \in \mathbb{Z}$, $m = \frac{i}{h}$, $n = \frac{j}{k}$, $i, j, h, k \in \mathbb{Z}$
+
+Then we substitute $x$ by $z^{h \cdot k}$ or some sorts and it will turn the function into a rational one as $x^m$ becomes $z^{i \cdot k}$ and $x^n$ becomes $z^{j \cdot h}$
+
+Otherwise, if $p = \frac{r}{t}$, $r, t \in \mathbb{Z}$, $t > 1$, $(r,t) = 1$, $t > 1$
+
+Unless $a = 0$, $(a + bx^n)^p$ is always radical.
+
+Hence we substitute $a + bx^n = z^t$ so that $(a + bx^n)^p$ becomes $(z^t)^{\frac{r}{t}} = z^r$
+
+However, problems arise when we process dz
+
+as $x^m dx = (\frac{z^t - a}{b})^{\frac{m+1}{n} - 1} \cdot \frac{tz^{t-1}}{bn} dz$
+
+The goal is to turn $I$ into an integral of a rational function.
+
+so $\dfrac{m+1}{n} \in \mathbb{Z}$ is required, else it will be a radical function.
+
+Case (3) is a special case where we try to turn $(a + bx^n)^p$ into $(ax^{-n} + b)^p \cdot x^{n \cdot p}$.
+
+Other than that, there are no other substitution to turn $I$ into an integral of a rational function.
+
+Then, we assume none of the 3 conditions are met.
+
+Now proceeding to integral by parts:
+
+If $\begin{cases} u = (a + bx^n)^p \\ dv = x^m dx \end{cases}$
+
+\[ \Rightarrow \begin{cases} du = bpnx^{n-1} (a + bx^n)^{p-1} dx \\  v = \left[
+\begin{array}{ll}
+\frac{x^{m+1}}{m+1} & \text{, } m \neq -1 \\
+\ln(x) & \text{, } m = -1
+\end{array}
+\right.\end{cases} \]
+
+\textbf{- $m \neq -1$:}
+\[ I = \frac{x^{m+1}}{m+1} (a + bx^n)^p - \int b \cdot p \cdot n (a + b \cdot x^n)^{p-1}  \frac{x^{m+n}}{m+1} dx\]
+
+Let H = $\int b \cdot p \cdot n (a + b \cdot x^n)^{p-1}  \frac{x^{m+n}}{m+1} dx$
+
+The total exponents of $x$ in $I'$ is $m + np$
+
+The total exponents of $x$ in $H'$ is $m + n + n(p-1) = m + np$
+
+So the total exponents of $x$ don't change, while $H = \int b \cdot p \cdot n (a + b \cdot x^n)^{p-1}  \frac{x^{m+n}}{m+1} dx$ has exactly the same form as $I$
+
+Therefore this approach won't lead to nowhere.
+
+\textbf{- $m = -1$:}
+\[ I = (a + bx^n)^p \ln(x) - \int b \cdot p \cdot n(a + bx^n)^{p-1} x^{n-1} \ln(x) dx \]
+
+Now if we attempt to let 
+\[ \begin{cases} u_1 = v \\ dv_1 = du \end{cases} \]
+
+We will loop back to the original integral. 
+
+But if we let
+\[ \begin{cases} u_1 = b \cdot p \cdot n(a + bx^n)^{p-1} x^{n-1} \\ dv_1 = \ln(x) dx \end{cases} \]
+
+Or something similar, it will make the problem more problematic. 
+
+Hence this approach is not the one either.
+
+If $\begin{cases} u = x^{m-n+1} \\ dv = x^{n-1} (a + b \cdot x^n)^p dx \end{cases}$
+\[ \Rightarrow \begin{cases} du = (m-n+1) x^{m-n} dx \\ v = \left[
+\begin{array}{ll}
+\frac{(a+b \cdot x^n)^{p+1}}{(p+1) \cdot b \cdot n} & \text{, } p \neq -1 \\
+\frac{\ln(a+b \cdot x^n)}{b \cdot n} & \text{, } p = -1
+\end{array}
+\right. \end{cases}\]
+
+\textbf{- $p \neq -1$:}
+\[ I = \frac{x^{m-n+1}}{(p+1) \cdot b \cdot n} (a + b \cdot x^n)^{p+1} + \int \frac{x^{m-n}}{(p+1) \cdot b\cdot n} (m-n+1)(a + bx^n)^{p+1} dx \]
+
+Similarly to the case above with $m \neq -1$, this approach is not the right one either.
+
+\textbf{- $p = -1$:}
+\[ I = \frac{x^{m-n+1}}{b\cdot n} \ln(a + b\cdot x^n) + \int \frac{m-n+1}{b\cdot n} \ln(a + b\cdot x^n) x^{m-n} dx \]
+
+Similarly to the case above with $m = -1$, this approach is not the right one either. 
+
+Any other attempts will lead to unsolvable $dv$ or overcomplicated functions, so this method won't show us any new conditions either.
+
+All in all, the Chebyshev Theorem is proved right.
+
 \pagebreak
