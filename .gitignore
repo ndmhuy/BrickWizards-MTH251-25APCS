@@ -1,1 +1,62 @@
-.vs/ 
+# --- 1. Main Generated Output ---
+# Compiled PDF file (the final output)
+*.pdf
+
+# --- 2. Common Auxiliary Files (Required for compilation) ---
+*.aux
+*.log
+*.out
+*.fls
+*.toc
+*.fdb_latexmk
+*.synctex.gz
+*.acn
+*.acr
+*.alg
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.nav
+*.nlo
+*.snm
+*.vrb
+*.gz
+
+# --- 3. Bibliography Files ---
+# BibTeX/Biber temporary files
+*.bbl
+*.bcf
+*.blg
+*.xml
+
+# --- 4. Editor/IDE Specific Files ---
+# Exclude files created by common editors (VS Code, TeXstudio, Sublime Text)
+
+# Visual Studio IDE/VS Code temp folders 
+.vs/
+.vscode/
+
+# TeXstudio and other editor session files
+*.txs
+
+# Temporary lock files created during editing
+*~
+.#*
+#*
+
+# --- 5. Custom/Less Common Files ---
+*.run.xml
+*.spl
+*.backup
+*.upa
+*.thm
+*.tds

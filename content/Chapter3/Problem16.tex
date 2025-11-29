@@ -10,5 +10,101 @@ Consider the integral
 \end{enumerate}
 
 \subsection*{Strategy}
+To derive the reduction formula, we will evaluate the general integral for $I_n$ and express it in terms of $I_{n-1}$. Specifically, we will:
+
+\begin{itemize}
+    \item Use the integration by parts method.
+    \item Derive the reduction formula.
+    \item Verify the result using direct integration.
+\end{itemize}
 \subsection*{Solution}
+\textbf{a)} 
+\noindent  When $n=0$,
+\[
+    I_0 = \int e^x \, dx = e^x + C
+\]
+\noindent With $n > 0$ ,
+\quad We consider the integral $I_n = \int x^n e^x \, dx$.
+
+\noindent Using integration by parts, let us define:
+\begin{align*}
+    u &= x^n & \implies \quad du &= n x^{n-1} \, dx \\
+    dv &= e^x \, dx & \implies \quad v &= e^x
+\end{align*}
+
+\noindent Substituting these into the formula $\int u \, dv = uv - \int v \, du$, we get:
+\begin{align*}
+    I_n &= x^n e^x - \int e^x \left( n x^{n-1} \right) \, dx \\
+        &= x^n e^x - n \int x^{n-1} e^x \, dx \\
+        &= x^n e^x - n I_{n-1}
+\end{align*}
+
+\noindent So we can conclude the reduction formula:
+\[
+\begin{cases}
+    I_0 = e^x + C \\
+    I_n = x^n e^x - n I_{n-1} \quad (\text{for } n \ge 1)
+\end{cases}
+\]
+
+\vspace{1em}
+
+\textbf{b)}
+
+\noindent \textbf{+) Using above reduction formula:} \\
+First, we compute $I_1$:
+\begin{align*}
+    I_1 &= x \cdot e^x - I_0 \\
+        &= x \cdot e^x - e^x
+\end{align*}
+So, for $I_2$:
+\begin{align*}
+    I_2 &= x^2 \cdot e^x - 2 \cdot I_1 \\
+        &= x^2 \cdot e^x - 2(x e^x - e^x) + C \\
+        &= x^2 e^x - 2x e^x + 2e^x + C \quad (1)
+\end{align*}
+
+\vspace{1em}
+
+\noindent \textbf{+) Direct integration:} \\
+We have $I_2 = \int x^2 e^x \, dx$.
+
+\noindent Let us define (1st iteration):
+\begin{align*}
+    u_1 &= x^2 \implies du_1 = 2x \, dx \\
+    dv_1 &= e^x \, dx \implies v_1 = e^x
+\end{align*}
+\[ \implies I_2 = x^2 e^x - \int 2x \cdot e^x \, dx \]
+
+\noindent Let us define (2nd iteration):
+\begin{align*}
+    u_2 &= 2x \implies du_2 = 2 \, dx \\
+    dv_2 &= e^x \, dx \implies v_2 = e^x
+\end{align*}
+Substituting back:
+\begin{align*}
+    \implies I_2 &= x^2 e^x - \left( 2x \cdot e^x - \int 2 \cdot e^x \, dx \right) \\
+    &= x^2 e^x - 2x e^x + 2 e^x + C' \quad (2)
+\end{align*}
+
+\noindent \textbf{Conclusion:} From (1) and (2), the results from the formula and direct integration are the same.
+\textbf{c)} \quad Using reduction formula for $I_3$:
+\begin{align*}
+    I_3 &= \int x^3 e^x \, dx \\
+        &= x^3 \cdot e^x - 3 \cdot I_2 \\
+        &= x^3 \cdot e^x - 3 \left( x^2 e^x - 2x e^x + 2e^x + 2C \right) \\
+        &= x^3 \cdot e^x - 3x^2 e^x + 6x e^x - 6e^x - 6C \\
+        &= e^x \left( x^3 - 3x^2 + 6x - 6 \right) - 6C
+\end{align*}
+\textbf{d)} \quad \textbf{Discussion on practical usefulness:}
+
+Such a reduction formula is highly valuable in practice for several reasons:
+
+\begin{itemize}
+    \item \textbf{Symbolic Computation Systems:}
+    Computer algebra systems (like WolframAlpha, Maple, or Mathematica) rely on systematic algorithms rather than human intuition. A reduction formula transforms a complex integration problem (requiring calculus) into a sequence of simple algebraic operations (multiplication and subtraction). This allows computers to calculate the integral for any large $n$ efficiently using a recursive loop or stack, reducing the problem step-by-step to the known base case $I_0$.
+
+    \item \textbf{Computing Moments in Probability:}
+    In statistics, finding the $n$-th moment $E[X^n]$ involves integrals of the form $\int x^n f(x) \, dx$. For distributions involving exponential terms (such as the Exponential or Gamma distributions), these integrals match the form of $I_n$. The reduction formula allows us to compute higher-order moments (needed for variance, skewness, and kurtosis) sequentially from lower-order ones without performing integration by parts repeatedly for each moment.
+\end{itemize}
 \pagebreak
