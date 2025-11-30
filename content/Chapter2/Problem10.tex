@@ -30,6 +30,40 @@ $$\frac{f(x) - f(0)}{x - 0} = f'(c) \implies \ln(1+x) = \frac{x}{1+c} $$
 
 \item
 The graph of $y = \ln(1+x)$ lies between the graph of the line $y = x$ and the graph of the function $y = \dfrac{x}{1+x}$ for all $x > -1$. All three curves meet at $(0, 0)$.
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,  
+        xlabel = $x$,
+        ylabel = $y$,
+        xmin = -1.5, xmax = 4.75, 
+        ymin = -3.5, ymax = 4.75, 
+        grid = major,         
+        width = 12cm, height = 10cm,
+        samples = 200,   
+        clip = false,
+    ]
+    \draw [ thick, black!60] (axis cs:-1, -3.25) -- (axis cs:-1, 5) 
+        node [pos=0.05, anchor=north] {$x = -1$};
+    \addplot[
+        domain = -0.9:3.5, 
+        color = blue, 
+        thick
+    ] {x} node[pos=1, right] {$y = x$};
+    \addplot[
+        domain = -0.9:3.5, 
+        color = red, 
+        very thick
+    ] {ln(1+x)} node[pos=1, right] {$y = \ln(1+x)$};
+    \addplot[
+        domain = -0.75:3.5, 
+        color = teal, 
+        thick
+    ] {x/(1+x)} node[pos=1, right] {$y = \dfrac{x}{x+1}$};
+    \filldraw[black] (axis cs:0,0) circle (2pt) 
+        node[anchor=north west] {$(0,0)$};
+    \end{axis}
+\end{tikzpicture}
+
 
 \item
 These inequalities provide a simple algebraic range for the value of $\ln(1+x)$, allowing for estimations without a calculator. For example:\\
