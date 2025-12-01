@@ -10,4 +10,87 @@ A lamp is mounted at the top of a 5-m high pole. A person who is 1.8 m tall walk
 
 \subsection*{Strategy}
 \subsection*{Solution}
+\begin{tikzpicture}[scale=0.9]
+
+  % Ground line
+  \draw[->] (-0.5,0) -- (7,0) node[right]{ground};
+
+  % Pole and lamp
+  \draw[very thick] (0,0) -- (0,5);
+  \fill (0,5) circle (2pt);
+  \node[above] at (0,5) {lamp};
+  \draw[<->] (-0.4,0) -- (-0.4,5) node[midway,left] {$5\,\text{m}$};
+
+  % Person
+  \draw[very thick] (3,0) -- (3,1.8);
+  \fill (3,1.8) circle (1.5pt);
+  \node[above] at (3,1.8) {person};
+  \draw[<->] (2.6,0) -- (2.6,1.8) node[midway,left] {$1.8\,\text{m}$};
+
+  % Shadow tip
+  \coordinate (Tip) at (4.6875,0);
+  \fill (Tip) circle (1.5pt);
+  \node[below] at (5,0) {shadow tip};
+
+  % Light rays
+  \draw[thick] (0,5) -- (Tip);
+  \draw[thick,dashed] (0,5) -- (3,1.8);
+
+  % Horizontal distances x and s
+  \draw[<->] (0,-0.5) -- (3,-0.5) node[midway,below] {$x$};
+  \draw[<->] (3,-1.0) -- (5,-1.0) node[midway,below] {$s$};
+
+\end{tikzpicture}
+
+\begin{itemize}
+
+    \item[(a)] 
+    We denote by $x$ the distance of the person from the pole and by $s$ the 
+    length of the shadow behind the person. The tip of the shadow is therefore 
+    $x+s$ meters from the pole.
+
+    \item[(b)] 
+    Using similar triangles, the lamp, person, and shadow satisfy
+    \[
+        \frac{5}{x+s} = \frac{1.8}{s}.
+    \]
+    Cross-multiplying gives
+    \[
+        5s = 1.8(x+s),
+    \]
+    \[
+        3.2s = 1.8x,
+    \]
+    so the relationship is
+    \[
+        \boxed{s = \frac{1.8}{3.2}x = 0.5625\,x}.
+    \]
+
+    \item[(c)] 
+    Differentiate the relation $s = 0.5625x$:
+    \[
+        \frac{ds}{dt} = 0.5625 \frac{dx}{dt}.
+    \]
+    Since the person walks at $\frac{dx}{dt} = 1.2$ m/s,
+    \[
+        \frac{ds}{dt} = 0.5625(1.2) = 0.675\ \text{m/s}.
+    \]
+    The positive sign means the shadow is growing.
+
+    \item[(d)]
+    The tip of the shadow is located at
+    \[
+        x+s = x + 0.5625x = 1.5625x.
+    \]
+    Differentiating,
+    \[
+        \frac{d}{dt}(x+s) = 1.5625\frac{dx}{dt}.
+    \]
+    Substituting $\frac{dx}{dt}=1.2$,
+    \[
+        \frac{d(x+s)}{dt} = 1.875\ \text{m/s}.
+    \]
+    Thus, the shadow’s tip moves faster than the person (1.875 m/s compared to 1.2 m/s).
+
+\end{itemize}
 \pagebreak
