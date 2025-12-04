@@ -12,7 +12,20 @@ A solid is obtained by rotating the region bounded by $y=x^{2}$, $y=0$, and $x=1
 \end{enumerate}
 
 \subsection*{Strategy}
+We are rotating the area under the parabola $y=x^2$ from $x=0$ to $x=1$ around $x$-axis and $x=2$ axis.
+\begin{itemize}
+    \item \textbf{Part (a):} We are rotating around the horizontal $x$-axis. Since the axis of rotation is a boundary of the region, we can slice perpendicular to the axis to obtain solid disks. The radius of each disk corresponds to the height of the function, $y=x^2$.
+    
+    \item \textbf{Part (b):} We are rotating around the vertical line $x=2$. For the shell method, we slice parallel to the axis of rotation to form thin cylindrical shells. The total volume is the sum of the volumes of these shells.
+    \begin{itemize}
+        \item The \textbf{radius} of a shell is the horizontal distance from the slice at $x$ to the axis at $2$, so $r = 2-x$.
+        \item The \textbf{height} of the shell is simply the function value $y=x^2$.
+    \end{itemize}
+\end{itemize}
+\pagebreak
+
 \subsection*{Solution}
+Here is a sketch of the region we are rotating:
 \begin{center}
 \begin{tikzpicture}
     \begin{axis}[
@@ -36,41 +49,237 @@ A solid is obtained by rotating the region bounded by $y=x^{2}$, $y=0$, and $x=1
         \addplot[gray!30] fill between[of=A and B];
         \node at (axis cs:0.7, 0.2) {Region};
 
-        % Draw Axis of Rotation for (b)
-        \addplot[red, dashed, thick] coordinates {(2,-0.5) (2,1.5)};
-        \node[red, right] at (axis cs:2, 0.8) {Axis $x=2$};
-        
+%        % Draw Axis of Rotation for (b)
+%        \addplot[red, dashed, thick] coordinates {(2,-0.5) (2,1.5)};
+%        \node[red, right] at (axis cs:2, 0.8) {Axis $x=2$};
     \end{axis}
 \end{tikzpicture}
 \end{center}
+
 \textbf{(c) Volume about the x-axis (Disk Method)}
-Since we are rotating about the x-axis, the cross-section at $x$ is a disk with radius $R(x) = x^2$.
-\[ V_a = \int_{0}^{1} \pi [R(x)]^2 dx = \pi \int_{0}^{1} (x^2)^2 dx \]
-Computing the integral:
-\[ V_a = \pi \int_{0}^{1} x^4 dx = \pi \left[ \frac{x^5}{5} \right]_{0}^{1} = \pi \left( \frac{1}{5} - 0 \right) = \boxed{\frac{\pi}{5}} \]
+Since we are rotating around the $x$-axis, our cross-sections are vertical disks with thickness $dx$.
+The radius of each disk is the distance from the x-axis to the curve: $R(x) = x^2$.
+
+%\begin{figure}[H]
+%    \centering
+%    % LEFT: 2D REGION
+%    \begin{tikzpicture}[scale=0.8]
+%        \begin{axis}[
+%            width=0.45\textwidth,
+%            axis lines=middle,
+%            xlabel=$x$, ylabel=$y$,
+%            xmin=-0.2, xmax=1.5,
+%            ymin=-0.2, ymax=1.2,
+%            title={\textbf{Region \& Rotation Axis ($y=0$)}}
+%        ]
+%            % Region Area
+%            \addplot[fill=blue!10, domain=0:1] {x^2} \closedcycle;
+%            
+%            % Boundaries
+%            \addplot[blue, thick, domain=0:1] {x^2} node[midway, above left] {$y=x^2$};
+%            \addplot[thick, black] coordinates {(0,0) (1,0)}; % y=0
+%            \addplot[red, thick] coordinates {(1,0) (1,1)} node[midway, right] {$x=1$};
+%            
+%            % Representative Slice (Disk)
+%            \draw[fill=blue!30] (axis cs:0.6,0) rectangle (axis cs:0.7, 0.36);
+%            \node at (axis cs:0.65, 0.18) {\scriptsize Disk};
+%            
+%            % Rotation Arrow
+%            \draw[->, purple, thick] (axis cs:0.5, -0.075) arc (-90:0:0.15) node[right] {\small Rotate};
+%        \end{axis}
+%    \end{tikzpicture}
+%    \hfill
+%    % RIGHT: 3D SOLID (DISK METHOD)
+%    \begin{tikzpicture}[scale=0.9]
+%        \begin{axis}[
+%            view={25}{30},
+%            axis lines=center,
+%            xlabel=$x$, ylabel=$y$, zlabel=$z$,
+%            xmin=0, xmax=1.5, ymin=-1, ymax=1, zmin=-1, zmax=1,
+%            title={\textbf{Solid of Revolution (Disk)}},
+%            ticks=none
+%        ]
+%            % The Solid Surface
+%            \addplot3[
+%                surf, shader=interp, opacity=0.7,
+%                colormap/viridis,
+%                domain=0:1, y domain=0:360,
+%                z buffer=sort
+%            ]
+%            ({x}, {x^2*cos(y)}, {x^2*sin(y)});
+%            
+%            % The "Lid" at x=1
+%            \addplot3[fill=black!20, draw=black, domain=0:360]
+%            ({1}, {cos(x)}, {sin(x)});
+%        \end{axis}
+%    \end{tikzpicture}
+%    \caption{Visualization of the Disk Method (Rotation about x-axis).}
+%\end{figure}
+
+Using the disk formula $V = \int_{a}^{b} \pi [R(x)]^2 dx$:
+\[ V_a = \pi \int_{0}^{1} (x^2)^2 dx = \pi \int_{0}^{1} x^4 dx \]
+Compute the integral:
+\[ V_a = \pi \left[ \frac{x^5}{5} \right]_{0}^{1} = \pi \left( \frac{1}{5} - 0 \right) = \boxed{\frac{\pi}{5}} \]
 
 \textbf{(d) Volume about the line x=2 (Shell Method)}
-We use cylindrical shells with thickness $dx$.
+Here, we use cylindrical shells. Since we are rotating about a vertical line $x=2$, the radius is horizontal.
 \begin{itemize}
-    \item \textbf{Radius ($r$):} The distance from the slice at $x$ to the axis $x=2$ is $r = 2 - x$.
-    \item \textbf{Height ($h$):} The height of the function at $x$ is $h = x^2$.
+    \item \textbf{Radius ($r$):} Distance from a slice at $x$ to the axis at 2 is $r = 2 - x$.
+    \item \textbf{Height ($h$):} The height of the shell is determined by the curve $y=x^2$.
 \end{itemize}
-The volume formula is $V = \int_{a}^{b} 2\pi r h \, dx$.
+
+%\begin{figure}[H]
+%    \centering
+%    % LEFT: 2D REGION WITH SHELL INFO
+%    \begin{tikzpicture}[scale=0.8]
+%        \begin{axis}[
+%            width=0.45\textwidth,
+%            axis lines=middle,
+%            xlabel=$x$, ylabel=$y$,
+%            xmin=0, xmax=2.5,
+%            ymin=0, ymax=1.2,
+%            title={\textbf{Region \& Rotation Axis ($x=2$)}}
+%        ]
+%            % Region
+%            \addplot[fill=blue!10, domain=0:1] {x^2} \closedcycle;
+%            \addplot[blue, thick, domain=0:1] {x^2};
+%            \addplot[red, thick] coordinates {(1,0) (1,1)};
+%            
+%            % Axis of Rotation
+%            \draw[red, dashed, very thick] (axis cs:2, 0) -- (axis cs:2, 1.2) node[above] {Axis $x=2$};
+%            
+%            % Radius Indicator
+%            \draw[<->, purple, thick] (axis cs:0.6, 0.36) -- (axis cs:2, 0.36) node[midway, above] {\small $r = 2-x$};
+%            
+%            % Representative Shell (Rectangle)
+%            \draw[fill=green!30] (axis cs:0.6,0) rectangle (axis cs:0.65, 0.36);
+%        \end{axis}
+%    \end{tikzpicture}
+%    \hfill
+%    % RIGHT: 3D SHELL
+%    \begin{tikzpicture}[scale=0.9]
+%        \begin{axis}[
+%            view={120}{25},
+%            axis lines=center,
+%            xlabel=$x$, ylabel=$y$, zlabel=$z$,
+%            xmin=-1, xmax=3, zmin=0, zmax=1,
+%            title={\textbf{Representative Shell}},
+%            ticks=none
+%        ]
+%            % Axis
+%            \draw[red, dashed, thick] (axis cs:2,0,0) -- (axis cs:2,0,1);
+%            
+%            % The Shell (Cylinder)
+%            % Center=(2,0), Radius=(2-0.6)=1.4, Height=0.6^2=0.36
+%            \addplot3[
+%                surf,
+%                opacity=0.6,
+%                fill=green!50!black, % Explicit color
+%                shader=flat,
+%                domain=0:360,
+%                y domain=0:0.36,
+%                z buffer=sort
+%            ]
+%            ({2 + 1.4*cos(x)}, {1.4*sin(x)}, {y});
+%            
+%            \node at (axis cs:0.6,0,0.4) {\small Single Shell};
+%        \end{axis}
+%    \end{tikzpicture}
+%    \caption{Visualization of the Shell Method (Rotation about x=2).}
+%\end{figure}
+
+Applying the shell formula $V = \int_{a}^{b} 2\pi r h \, dx$:
 \[ V_b = \int_{0}^{1} 2\pi (2-x)(x^2) dx \]
-Evaluating the integral:
+Compute the integral:
 \[ V_b = 2\pi \int_{0}^{1} (2x^2 - x^3) dx \]
 \[ V_b = 2\pi \left[ \frac{2x^3}{3} - \frac{x^4}{4} \right]_{0}^{1} \]
 \[ V_b = 2\pi \left( \left(\frac{2}{3} - \frac{1}{4}\right) - 0 \right) = 2\pi \left( \frac{8-3}{12} \right) = 2\pi \left(\frac{5}{12}\right) = \boxed{\frac{5\pi}{6}} \]
 
 \textbf{(e) Comparison of Methods}
 \begin{itemize}
-    \item \textbf{Case (a):} The Disk method was very convenient because the rotation axis ($y=0$) was a boundary of the region, and the function $y=x^2$ was explicitly given. Using shells here would require integrating with respect to $y$ (horizontal shells), involving $x=\sqrt{y}$, which is slightly more complex.
-    \item \textbf{Case (b):} The Shell method was convenient because we could continue using the variable $x$. If we used the Washer method (slices perpendicular to $x=2$, i.e., horizontal $dy$), we would need:
-    \begin{itemize}
-        \item Outer radius $R_{out} = 2 - 0 = 2$ (distance from axis to y-axis).
-        \item Inner radius $R_{in} = 2 - \sqrt{y}$ (distance from axis to curve).
-    \end{itemize}
-    The integral would be $\pi \int_0^1 (2^2 - (2-\sqrt{y})^2) dy$, which involves more algebra to expand.
-    \item \textbf{Conclusion:} The shell method is generally better when rotating about vertical lines for functions given as $y=f(x)$, as it avoids solving for $x$ and dealing with potentially complicated inverse functions.
+    \item \textbf{Case (a):} The Disk method is more convenient here because the axis of rotation is right on the boundary, and the function $y=x^2$ is ready to calculate the radius of each disk. Trying to use Shells would be messy because we would have to switch everything to terms of $y$, which is just extra work.
+    \item \textbf{Case (b):} The Shell method is the clear winner. We keep everything in terms of $x$. If we tried the Washer method, we would be slicing horizontally. That would mean finding an inner radius ($R_{in} = 2-\sqrt{y}$) and an outer radius ($R_{out} = 2$), squaring both, and integrating with respect to $y$. That's way more complex.
+    \item \textbf{Conclusion:} Generally, if the function is given as $y=f(x)$ and we rotate around a vertical line, Shells are usually easier because we don't have to invert the function. If we rotate around a horizontal line, Disks/Washers are often the natural choice.
+    \item \textbf{Extension:} However, with a complex composite shape like the one below, the Shell Method becomes inefficient. The geometry consists of multiple distinct parts stacked vertically, which would force us to set up many separate integrals if we used shells. The Disk Method is far more direct here.
 \end{itemize}
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+    % --- DEFINITIONS ---
+    % Coordinates based on dimensions:
+    % Base: y=0 to y=2. Widths: 8 (x=4) to 4 (x=2).
+    % Body: y=2 to y=10. Widths: 4 (x=2) to 6 (x=3).
+    % Head: y=10 to y=16. Width 6 (x=3) at bottom, peak at y=16.
+    
+    % 1. DRAW THE SHAPES (FILLED)
+    
+    % Base (Parabolic sides)
+    % Vertex of parabola is at top-right of base (2,2) for the right side profile? 
+    % Let's fit x = 2 + sqrt(2(2-y)) approx.
+    \fill[white] (-4,0) rectangle (4,16); % Background
+    
+    % Draw the filling
+    \fill[magenta!5] 
+        (-4,0) to[out=20, in=250] (-2,2) -- % Left Base
+        (-3,10) -- % Left Body
+        (-3,10) arc (216.87 : 323.13 : 3.75) -- % Head (Circle Arc)
+        (3,10) -- % Right Body start
+        (2,2) to[out=290, in=160] (4,0) -- cycle; % Right Base
+        
+    % 2. DRAW THE OUTLINES (THICK PINK)
+    
+    % Base Curve (Parabola-like)
+    \draw[magenta, very thick] (2,2) to[out=290, in=160] (4,0);
+    \draw[magenta, very thick] (-2,2) to[out=250, in=20] (-4,0);
+    
+    % Base Ellipses (Dashed hidden, Solid visible)
+    \draw[magenta, very thick] (0,0) ellipse (4 and 0.8); % Bottom
+    \draw[magenta, very thick, dashed] (2,2) arc (0:180:2 and 0.4); % Top Back
+    \draw[magenta, very thick] (2,2) arc (0:-180:2 and 0.4); % Top Front
+    
+    % Body Lines
+    \draw[magenta, very thick] (2,2) -- (3,10);
+    \draw[magenta, very thick] (-2,2) -- (-3,10);
+    
+    % Neck Ellipse
+    \draw[magenta, very thick, dashed] (3,10) arc (0:180:3 and 0.6); % Back
+    \draw[magenta, very thick] (3,10) arc (0:-180:3 and 0.6); % Front
+    
+    % Head (Circle Arc)
+    % Calculated Radius for width 6 height 6: R=3.75, Center at y=12.25
+    \draw[magenta, very thick] (3,10) arc (-36.87 : 216.87 : 3.75);
+
+    % 3. POINTS AND LABELS
+    \fill[black] (4,0) circle (4pt) node[right] {$A$};
+    \fill[black] (2,2) circle (4pt) node[right] {$B$};
+    \fill[black] (3,10) circle (4pt) node[right] {$C$};
+    \fill[black] (-3,10) circle (4pt) node[left] {$D$};
+
+    % 4. DIMENSIONS (Black Arrows & Numbers)
+    
+    % Vertical Dimensions (Right side)
+    \draw[<->] (5,0) -- (5,2) node[midway, right, text=magenta] {\textbf{2}};
+    \draw[<->] (5,2) -- (5,10) node[midway, right, text=magenta] {\textbf{8}};
+    \draw[<->] (5,10) -- (5,16) node[midway, right, text=magenta] {\textbf{6}};
+    % Total Height Line
+    \draw[thin, dashed] (4,0) -- (5.2,0);
+    \draw[thin, dashed] (2,2) -- (5.2,2);
+    \draw[thin, dashed] (3,10) -- (5.2,10);
+    \draw[thin, dashed] (0,16) -- (5.2,16);
+    \node[right, text=magenta] at (6, 8) {\textbf{16}}; % Total 16 label
+    
+    % Horizontal Dimensions
+    
+    % Bottom (8)
+    \draw[<->] (-4,-1.5) -- (4,-1.5) node[midway, below, text=magenta] {\textbf{8}};
+    \draw[thin, dashed] (-4,0) -- (-4,-1.5);
+    \draw[thin, dashed] (4,0) -- (4,-1.5);
+    
+    % Base Top (4)
+    \draw[<->, dashed] (-2,2) -- (2,2) node[midway, above, text=magenta] {\textbf{4}};
+    
+    % Neck (6)
+    \draw[<->, dashed] (-3,10) -- (3,10) node[midway, above, text=magenta] {\textbf{6}};
+    
+\end{tikzpicture}
+\end{center}
 \pagebreak

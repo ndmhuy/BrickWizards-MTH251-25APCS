@@ -11,6 +11,13 @@ where $a$ and $b$ are real parameters.
 \end{enumerate}
 
 \subsection*{Strategy}
+To solve this problem, we will systematically apply the definitions of continuity and differentiability.
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Analyze Limits:} We will first simplify the algebraic expressions for $f(x)$ and $g(x)$ to evaluate their limits as $x$ approaches the points ($x=1$ for $f$ and $x=0$ for $g$). For $g(x)$, we need to handle the parameter $b$ carefully, distinguishing between $b=0$ and $b \neq 0$.
+    \item \textbf{Apply Continuity Definition:} We will use the condition $\lim_{x \to c} h(x) = h(c)$ to find the required values for parameters $a$ and $b$.
+    \item \textbf{Geometric Interpretation:} We will interpret these results graphically, viewing the continuity condition as filling a "hole" in an otherwise smooth curve.
+    \item \textbf{Differentiability Logic:} We will distinguish between "patching a hole" (continuity) and "smoothing a corner" (differentiability) to explain why continuity does not guarantee differentiability.
+\end{enumerate}
 
 \subsection*{Solution}
 \textbf{(a) Computing the limits}
@@ -31,22 +38,122 @@ where $a$ and $b$ are real parameters.
 \textbf{(b) Finding parameters for continuity}
 \begin{itemize}
     \item For $f$ to be continuous at $x = 1$, we need:
-    \[ \lim_{x \to 1} f(x) = f(1) \Longleftrightarrow a = 2 \]
+    \[ \lim_{x \to 1} f(x) = f(1) \Longleftrightarrow \boxed{a = 2} \]
     \item For $g$ to be continuous at $x = 0$, we need:
-    \[ \lim_{x \to 0} g(x) = g(0) \Longleftrightarrow b = 1\]
+    \[ \lim_{x \to 0} g(x) = g(0) \Longleftrightarrow \boxed{b = 1}\]
 \end{itemize}
 
 \textbf{(c) Graphs and patching}
 \begin{itemize}
-    \item \textbf{Graph of f:} With $a=2$, $f(x) = x+1$ for all $x$. The original expression $\frac{x^2-1}{x-1}$ represents the line $y=x+1$ with a "hole" (removable discontinuity) at $(1,2)$. Setting $f(1)=2$ simply "plugs" this hole, making the line unbroken.
-    \item \textbf{Graph of g:} With $b=1$, $g(x) = \frac{\sin x}{x}$. This is the classic sinc function. It has a hole at $x=0$ because the expression is undefined there. Defining $g(0)=1$ fills this hole, connecting the left and right branches smoothly.
+    \item \textbf{Graph of f}
+    \begin{center}
+        \begin{tikzpicture}
+            % Graph for f(x)
+            \begin{axis}[
+                width=0.45\textwidth,
+                title={$y = f(x) = x+1$ (Patched at $x=1$)},
+                axis lines=middle,
+                xlabel={$x$}, ylabel={$y$},
+                xmin=-1, xmax=3,
+                ymin=0, ymax=4,
+                grid=major
+            ]
+                % The line y = x + 1
+                \addplot[blue, thick, domain=-1:3] {x+1};
+                % The "patched" point a=2 at x=1 (Solid Red Dot)
+                \addplot[mark=*, color=red, mark size=3pt] coordinates {(1,2)};
+                \node[right, red] at (axis cs:1,1.8) {$(1,2)$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    For $x \neq 1$, the function simplifies to $f(x)=\dfrac{(x-1)(x+1)}{x-1} = x+1$. This is the equation of a straight line. The expression $\dfrac{x^2-1}{x-1}$ is undefined at $x = 1$, creating a "hole" (removable discontinuity) at $(1,2)$ in the graph of $y=x+1$. \\
+    By defining $f(1)=a=2$, we place a point exactly at the hole. This "patches" the graph, filling the hole and making the function continuous. The graph of $f(x)$ is the complete line $y=x+1$
+    \item \textbf{Graph of g}
+    \begin{center}
+        \begin{tikzpicture}
+            % Graph for g(x)
+            \begin{axis}[
+                width=0.45\textwidth,
+                title={$g(x) = \dfrac{\sin x}{x}$ (Patched at $x=0$)},
+                axis lines=middle,
+                xlabel={$x$}, ylabel={$y$},
+                xmin=-10, xmax=10,
+                ymin=-0.4, ymax=1.2,
+                grid=major
+            ]
+            % The curve sin(x)/x
+            \addplot[blue, thick, samples=100, domain=-10:10] {sin(deg(x))/x};
+            % The "patched" point b=1 at x=0 (Solid Red Dot)
+            \addplot[mark=*, color=red, mark size=3pt] coordinates {(0,1)};
+            \node[right, red] at (axis cs:0,1) {$(0,1)$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    With $b=1$, $g(x) = \dfrac{\sin x}{x}$. It has a hole at $x=0$ because the expression is undefined there. Defining $g(0)=b=1$ fills this gap, connecting the left and right branches smoothly.
 \end{itemize}
 
 \textbf{(d) Continuity vs. Differentiability}
-Changing the value of a function at a single point can only fix \textbf{removable discontinuities} (holes). It cannot fix geometric "kinks" or "corners".
+Differentiability at a point $x=c$ requires the existence of the limit of the difference quotient:
+\[ f'(c) = \lim_{h \to 0} \frac{f(c+h) - f(c)}{h} \]
+For this limit to exist, the left-hand derivative (slope coming from the left) and the right-hand derivative (slope coming from the right) must be equal. \\
+Changing the value of $f(c)$ at a single point can repair a \textbf{removable discontinuity} (a hole), making the function continuous. However, it cannot repair a \textbf{geometric corner} or "kink".
 \begin{itemize}
-    \item Differentiability requires the existence of the limit of the difference quotient (the slope).
-    \item If the left-hand derivative (slope coming from left) and right-hand derivative (slope coming from right) are different (e.g., $|x|$ at 0), there is a sharp corner.
-    \item Adjusting the function value $f(c)$ moves the point up or down but does not change the slope of the curve approaching that point. Therefore, you cannot "smooth out" a sharp corner just by defining a point; the derivatives themselves must match.
+    \item If the one-sided derivatives disagree (e.g., slope is $-1$ from the left and $+1$ from the right), the graph has a sharp corner.
+    \item No matter what value we assign to the point $f(c)$, the slopes approaching that point remain different. Therefore, no single tangent line exists, and the function remains non-differentiable.
 \end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+    % Graph 1: The Counter-Example (Sharp Corner)
+    \begin{axis}[
+        width=0.45\textwidth,
+        title={Geometric corner},
+        axis lines=middle,
+        xlabel={$x$}, ylabel={$y$},
+        xmin=-2, xmax=2,
+        ymin=0, ymax=2.5,
+        grid=major,
+        xtick={-1,0,1},
+        ytick={1,2}
+    ]
+        % Left side (Slope = -1)
+        \addplot[blue, thick, domain=-2:0] {-x};
+        % Right side (Slope = +1)
+        \addplot[blue, thick, domain=0:2] {x};
+        
+        % The "Patched" point
+        \addplot[mark=*, color=red] coordinates {(0,0)};
+        
+        % Annotations for slopes
+        \node[blue, left] at (axis cs:-1, 0.8) {$m = -1$};
+        \node[blue, right] at (axis cs:1, 0.8) {$m = +1$};
+        \node[red, left] at (axis cs:-0.3, 0.2) {Sharp Corner};
+    \end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+    % Graph 2: The Contrast (Smooth)
+    \begin{axis}[
+        width=0.45\textwidth,
+        title={Differentiable (Smooth Join)},
+        axis lines=middle,
+        xlabel={$x$}, ylabel={$y$},
+        xmin=-2, xmax=2,
+        ymin=-0.5, ymax=2.5,
+        grid=major,
+        xtick={-1,0,1}
+    ]
+        % A parabola (Smooth)
+        \addplot[teal, thick, domain=-2:2] {0.5*x^2};
+        
+        % The point
+        \addplot[mark=*, color=teal] coordinates {(0,0)};
+        
+        % Tangent Line (Unique)
+        \addplot[black, dashed, domain=-1.5:1.5] {0};
+        \node[teal, above] at (axis cs:0, 0.5) {Unique Tangent};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
 \pagebreak

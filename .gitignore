@@ -59,4 +59,4 @@
 *.backup
 *.upa
 *.thm
-*.tds
+*.tds.DS_Store
