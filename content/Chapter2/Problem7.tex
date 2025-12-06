@@ -11,4 +11,82 @@ Let
 
 \subsection*{Strategy}
 \subsection*{Solution}
+\begin{enumerate}[label=(\alph*)]
+
+    \item \textbf{Compute $f'(x)$} \\
+    Let $f(x) = \frac{e^{2x}}{x^2+1}$. We identify:
+    \begin{align*}
+        u &= e^{2x} & v &= x^2+1 \\
+        u' &= 2e^{2x} \quad (\text{Chain Rule}) & v' &= 2x
+    \end{align*}
+    Applying the Quotient Rule:
+    \[ f'(x) = \frac{u'v - uv'}{v^2} = \frac{2e^{2x}(x^2+1) - e^{2x}(2x)}{(x^2+1)^2} \]
+    
+    Now, we simplify by factoring out $2e^{2x}$ from the numerator:
+    \begin{align*}
+        f'(x) &= \frac{2e^{2x} \left[ (x^2+1) - x \right]}{(x^2+1)^2} \\
+        &= \mathbf{\frac{2e^{2x}(x^2 - x + 1)}{(x^2+1)^2}}
+    \end{align*}
+
+    \item \textbf{Linear Approximation at $x=0$} \\
+    The formula for linear approximation at $a=0$ is $L(x) = f(0) + f'(0)(x-0)$.
+    
+    First, find the values at $x=0$:
+    \[ f(0) = \frac{e^{2(0)}}{0^2+1} = \frac{1}{1} = 1 \]
+    \[ f'(0) = \frac{2e^0(0^2 - 0 + 1)}{(0^2+1)^2} = \frac{2(1)}{1} = 2 \]
+    
+    The linear approximation is:
+    \[ L(x) = 1 + 2(x) = \mathbf{1 + 2x} \]
+    
+    Approximating $f(0.1)$:
+    \[ f(0.1) \approx L(0.1) = 1 + 2(0.1) = \mathbf{1.2} \]
+
+    \item \textbf{Absolute Error Calculation} \\
+    First, we calculate the exact value of $f(0.1)$:
+    \[ f(0.1) = \frac{e^{0.2}}{(0.1)^2+1} = \frac{e^{0.2}}{1.01} \approx \frac{1.2214027}{1.01} \approx 1.20931 \]
+    
+    Now, calculate the absolute error:
+    \[ \text{Error} = | f(0.1) - L(0.1) | \approx | 1.20931 - 1.2 | = \mathbf{0.00931} \]
+
+    \item \textbf{Accuracy and Second Derivative} \\
+    The linear approximation $L(x)$ represents the tangent line to the curve at $x=0$.
+    \begin{itemize}
+        \item \textbf{Why it is accurate near 0:} At the point of tangency ($x=0$), the line and the curve touch and have the same slope. For very small $\Delta x$, the curve has not had "time" to bend away from the line significantly.
+        \item \textbf{Why it breaks down for large $x$:} The function $f(x)$ is curved, while $L(x)$ is straight. As we move away from $x=0$, this curvature causes the gap between the function and the line to widen.
+        \item \textbf{Relation to $f''(x)$:} The second derivative $f''(x)$ measures the \textbf{concavity} (or curvature) of the function. The error in linear approximation is approximately proportional to $\frac{1}{2}f''(c)(x-a)^2$ (from Taylor's Theorem). If $f''(x)$ is large, the graph curves sharply, and the linear approximation becomes inaccurate very quickly. If $f''(x) \approx 0$, the graph is nearly flat, and the line remains accurate for longer.
+    \end{itemize}
+
+\end{enumerate}
+
+\vspace{1em}
+\noindent\textbf{Visualizing the Approximation:}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Linear Approximation vs. Exact Function},
+        xlabel={$x$},
+        ylabel={$y$},
+        axis lines=middle,
+        grid=major,
+        xmin=-0.5, xmax=0.5,
+        ymin=0, ymax=2.5,
+        width=10cm, height=7cm,
+        legend pos=north west
+    ]
+    
+    \addplot[color=blue, thick, samples=100, domain=-0.5:0.5] 
+        {exp(2*x) / (x^2 + 1)};
+    \addlegendentry{$f(x) = \frac{e^{2x}}{x^2+1}$}
+    
+    \addplot[color=red, dashed, thick, domain=-0.5:0.5] 
+        {1 + 2*x};
+    \addlegendentry{$L(x) = 1 + 2x$}
+    
+    \addplot[mark=*, color=black] coordinates {(0,1)};
+    \node[anchor=south east] at (axis cs: 0,1) {(0,1)};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
 \pagebreak
