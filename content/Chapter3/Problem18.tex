@@ -10,6 +10,16 @@ Consider the improper integral
 \end{enumerate}
 
 \subsection*{Strategy}
+\begin{enumerate}[label=(\alph*)]
+    \item We will evaluate the integral by separating the problem into two distinct cases based on the power rule for integration: the logarithmic case ($p=1$) and the power function case ($p \neq 1$). This will establish the standard convergence criteria for p-integrals.
+
+    \item We will use the Limit Comparison Test. The key strategy is to compare this function with a standard p-integral $\frac{1}{x^q}$. Since $\ln x$ grows slower than any positive power of $x$, we aim to show that for certain $p$, the decay of $x^{-p}$ is sufficient to overcome the growth of $\ln x$.
+
+    \item For the specific case $p=3$, we will compute the value of the improper integral by using Integration by Parts, choosing $u = \ln x$ to eliminate the logarithm, and $dv = x^{-3}dx$. We will evaluate the resulting antiderivative at the limits of integration.
+
+    \item Finally, we will synthesize the results to explain the hierarchy of growth rates. The discussion will focus on how the "fast" polynomial decay of the term $x^{-p}$ (for $p>1$) dominates the "slow" logarithmic growth of $\ln x$, ensuring that the area under the curve remains finite despite the numerator approaching infinity.
+\end{enumerate}
+
 \subsection*{Solution}
 \begin{enumerate}[label=(\alph*), start=1]
 \item 
