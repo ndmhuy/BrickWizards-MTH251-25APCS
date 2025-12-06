@@ -12,4 +12,100 @@ with appropriate domains.
 
 \subsection*{Strategy}
 \subsection*{Solution}
+\begin{enumerate}[label=(\alph*)]
+
+    \item \textbf{Transformation and Domain of $f$} \\
+    The base function is $y_{base} = \sqrt{4-x^2}$, which represents the upper semi-circle centered at $(0,0)$ with radius $2$.
+    
+    The function $f(x) = \sqrt{4-(x-1)^2}$ replaces $x$ with $(x-1)$.
+    \begin{itemize}
+        \item \textbf{Transformation:} This is a \textbf{horizontal translation (shift) to the right by 1 unit}. The center of the semi-circle moves from $(0,0)$ to $(1,0)$.
+        \item \textbf{Domain:} The expression inside the square root must be non-negative:
+        \[ 4 - (x-1)^2 \geq 0 \implies (x-1)^2 \leq 4 \]
+        \[ -2 \leq x-1 \leq 2 \implies \mathbf{[-1, 3]} \]
+        \item \textbf{Range:} The output of a square root is non-negative, and the maximum value occurs when $(x-1)^2=0$. Thus, $0 \leq f(x) \leq \sqrt{4} = 2$.
+        \[ \text{Range: } \mathbf{[0, 2]} \]
+    \end{itemize}
+
+    \item \textbf{Inverse of $g$} \\
+    Let $g(x) = \ln(x+2)$.
+    \begin{itemize}
+        \item \textbf{Domain:} The argument must be positive: $x+2 > 0 \implies x > -2$. Domain: $\mathbf{(-2, \infty)}$.
+        \item \textbf{Finding $g^{-1}$:} Let $y = \ln(x+2)$. Swap $x$ and $y$:
+        \[ x = \ln(y+2) \]
+        Exponentiate both sides:
+        \[ e^x = y+2 \implies y = e^x - 2 \]
+        Thus, $\mathbf{g^{-1}(x) = e^x - 2}$.
+        \item \textbf{Verification:}
+        \[ g(g^{-1}(x)) = \ln((e^x - 2) + 2) = \ln(e^x) = x \]
+        \[ g^{-1}(g(x)) = e^{\ln(x+2)} - 2 = (x+2) - 2 = x \]
+    \end{itemize}
+
+    \item \textbf{Composition and Domain of $h$} \\
+    The composition is $h(x) = f(g(x))$. Substituting $g(x)$ into $f(x)$:
+    \[ h(x) = \sqrt{4 - (\ln(x+2) - 1)^2} \]
+    
+    \textbf{Domain Constraints:}
+    \begin{enumerate}
+        \item From the inner function $g(x)$, we need $x > -2$.
+        \item From the outer function $f(u)$, the input $u$ must be in $[-1, 3]$. Here, $u = g(x) = \ln(x+2)$. Therefore:
+        \[ -1 \leq \ln(x+2) \leq 3 \]
+    \end{enumerate}
+    Solving this compound inequality:
+    \[ e^{-1} \leq x+2 \leq e^3 \]
+    \[ e^{-1} - 2 \leq x \leq e^3 - 2 \]
+    \[ \approx -1.632 \leq x \leq 18.086 \]
+    
+    \textbf{Why is it more restrictive?}
+    The domain of $g$ is $(-2, \infty)$. However, $h$ restricts this further because the output of $g$ cannot just be \textit{any} number; it must be small enough so that when we square it and subtract it from 4 (in the outer function), the result is valid. Specifically, $g(x)$ cannot exceed 3 or be less than -1.
+
+    \item \textbf{Graphs and Behavior} \\
+    The graphs of $g(x)$ and $h(x)$ are shown below.
+    
+    \textbf{Discussion of Left Endpoint:}
+    The domain of $h$ starts at $x_{min} = e^{-1}-2 \approx -1.63$.
+    At this value, $g(x_{min}) = \ln(e^{-1}) = -1$.
+    Plugging this into $f$, we get $f(-1) = \sqrt{4-(-1-1)^2} = \sqrt{4-4} = 0$.
+    Thus, as $x$ approaches the left boundary of the domain, $h(x)$ goes to 0. This reflects the "edge" of the semi-circle in the outer function.
+    
+\end{enumerate}
+
+\vspace{1em}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = $x$,
+        ylabel = $y$,
+        ymin = -2, ymax = 3,
+        xmin = -3, xmax = 5,
+        grid = major,
+        width=10cm, height=7cm,
+        legend pos=north west
+    ]
+    
+    \addplot [
+        domain=-1.9:5, 
+        samples=100, 
+        color=blue, 
+        thick
+    ]
+    {ln(x+2)};
+    \addlegendentry{$g(x)=\ln(x+2)$}
+    
+    \addplot [
+        domain=-1.632:5, 
+        samples=100, 
+        color=red, 
+        thick
+    ]
+    {sqrt(4 - (ln(x+2)-1)^2)};
+    \addlegendentry{$h(x)$}
+    
+    \draw [dashed] (axis cs:-2,-2) -- (axis cs:-2,3);
+    
+    \end{axis}
+\end{tikzpicture}
+\end{center}
 \pagebreak
