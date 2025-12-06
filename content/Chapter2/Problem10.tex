@@ -11,6 +11,15 @@ Let $f(x)=\ln(1+x)$, defined for $x>-1$.
 \end{enumerate}
 
 \subsection*{Strategy}
+\begin{enumerate}[label=(\alph*)]
+    \item Recall the standard hypotheses regarding continuity on a closed interval and differentiability on an open interval required for the Mean Value Theorem to hold.
+    
+    \item Define the function $f(x) = \ln(1+x)$. Apply the MVT on the interval with endpoints $0$ and $x$. Express $\ln(1+x)$ in terms of $f'(c)$ and use the fact that $c$ lies strictly between $0$ and $x$ to bound the derivative, thereby establishing the inequalities.
+    
+    \item Translate the algebraic inequality $A(x) \le B(x) \le C(x)$ into geometric terms, demonstrating that the curve $y = \ln(1+x)$ lies between the line $y=x$ and the hyperbola $y = \frac{x}{1+x}$.
+    
+    \item Use the rational bounds derived in (b) to approximate irrational logarithmic values. For error analysis, quantify the difference between the linear approximation ($y=x$) and the actual function by comparing it with the lower bound.
+\end{enumerate}
 \subsection*{Solution}
 \begin{enumerate}[label=(\alph*)]
 \item The Mean Value Theorem states that if a function $f(x)$ is continuous on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$, then there exists at least one number $c$ in $(a, b)$ such that:
@@ -19,7 +28,7 @@ $$f'(c) = \frac{f(b) - f(a)}{b - a}$$
 \item Use the MVT to prove that for $x > -1$, $\dfrac{x}{1+x} \le \ln(1+x) \le x$\\
 For $x=0$, it is easy to check that the inequalities are right.
 \\
-For $x\neq 0$, we have: $f'(t) = \dfrac{1}{1+t}$. 
+For $x\neq 0$, let $f(x) = ln(1+x) \implies f'(x) = \dfrac{1}{1+x}$. 
 \\Applying the MVT for $x$ and $0$, there exists $c$ in the open interval between $x$ and $0$ such that:
 $$\frac{f(x) - f(0)}{x - 0} = f'(c) \implies \ln(1+x) = \frac{x}{1+c} $$
 
