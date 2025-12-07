@@ -22,7 +22,7 @@ with appropriate domains.
         \item \textbf{Transformation:} This is a \textbf{horizontal translation (shift) to the right by 1 unit}. The center of the semi-circle moves from $(0,0)$ to $(1,0)$.
         \item \textbf{Domain:} The expression inside the square root must be non-negative:
         \[ 4 - (x-1)^2 \geq 0 \implies (x-1)^2 \leq 4 \]
-        \[ -2 \leq x-1 \leq 2 \implies \mathbf{[-1, 3]} \]
+        \[ \implies -2 \leq x-1 \leq 2 \implies Domain:\mathbf{[-1, 3]} \]
         \item \textbf{Range:} The output of a square root is non-negative, and the maximum value occurs when $(x-1)^2=0$. Thus, $0 \leq f(x) \leq \sqrt{4} = 2$.
         \[ \text{Range: } \mathbf{[0, 2]} \]
     \end{itemize}
@@ -31,6 +31,12 @@ with appropriate domains.
     Let $g(x) = \ln(x+2)$.
     \begin{itemize}
         \item \textbf{Domain:} The argument must be positive: $x+2 > 0 \implies x > -2$. Domain: $\mathbf{(-2, \infty)}$.
+        \item \textbf{Proving $g(x)$ is one-to-one function:} \\
+        To ensure the inverse exists, we prove $g(x)$ is one-to-one by checking its monotonicity using the derivative.
+        \[ g'(x) = \frac{d}{dx}[\ln(x+2)] = \frac{1}{x+2} \]
+        Recall the domain is $x > -2$. For any $x$ in this domain:
+        \[ x+2 > 0 \implies \frac{1}{x+2} > 0 \]
+        Since $g'(x) > 0$ for all $x \in (-2, \infty)$, the function is strictly increasing. Therefore, $g(x)$ is one-to-one.
         \item \textbf{Finding $g^{-1}$:} Let $y = \ln(x+2)$. Swap $x$ and $y$:
         \[ x = \ln(y+2) \]
         Exponentiate both sides:
