@@ -9,6 +9,37 @@ A lamp is mounted at the top of a 5-m high pole. A person who is 1.8 m tall walk
 \end{enumerate}
 
 \subsection*{Strategy}
+\begin{itemize}
+
+    \item[(1)] 
+    Let $x$ be the horizontal distance of the person from the pole, and let 
+    $s$ be the length of the person’s shadow on the ground.  
+    Then the tip of the shadow is $x+s$ meters from the pole.
+
+    \item[(2)]
+    Observe that the lamp at height $5$ m, the person of height $1.8$ m, and the
+    shadow tip form two similar right triangles.  
+    Using the ratio of corresponding sides, we set up the proportion
+    \[
+        \frac{5}{x+s} = \frac{1.8}{s}.
+    \]
+    Solving this proportionality will give a direct linear relation between 
+    the shadow length $s$ and the distance $x$.
+
+    \item[(3)]
+    Once the relationship $s = kx$ is obtained (where $k=0.5625$), 
+    differentiate with respect to time $t$ to find 
+    $\dfrac{ds}{dt}$ in terms of $\dfrac{dx}{dt}$, using the fact that the 
+    person walks away from the pole at $1.2$ m/s.
+
+    \item[(4)]
+    To determine how fast the \emph{tip} of the shadow moves, 
+    note that its position is $x+s$.  
+    Differentiate $x+s$ with respect to time and substitute 
+    $\dfrac{dx}{dt}=1.2$ and the relation between $s$ and $x$ 
+    to obtain $\dfrac{d(x+s)}{dt}$.
+\end{itemize}
+
 \subsection*{Solution}
 \begin{tikzpicture}[scale=0.9]
 
@@ -73,7 +104,7 @@ A lamp is mounted at the top of a 5-m high pole. A person who is 1.8 m tall walk
     \]
     Since the person walks at $\frac{dx}{dt} = 1.2$ m/s,
     \[
-        \frac{ds}{dt} = 0.5625(1.2) = 0.675\ \text{m/s}.
+        \frac{ds}{dt} = 0.5625 * 1.2 = 0.675\ \text{m/s}.
     \]
     The positive sign means the shadow is growing.
 
