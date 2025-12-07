@@ -11,6 +11,34 @@ Suppose you are given that the longest day has 14 hours of daylight (around day 
 \end{enumerate}
 
 \subsection*{Strategy}
+
+To construct the trigonometric model
+\[
+D(t) = A + B\cos\!\left[\omega(t - t_0)\right],
+\]
+we determine the parameters $A$, $B$, $\omega$, and $t_0$ using the qualitative
+information given:
+
+\begin{itemize}
+    \item \textbf{1. Use maximum and minimum values:}  
+    The longest and shortest days give the maximum and minimum of $D(t)$.
+    These determine the vertical shift $A$ (average value) and the amplitude
+    $B$.
+
+    \item \textbf{2. Use the yearly cycle:}  
+    Since daylight repeats every 365 days, the period of the cosine must be
+    $T=365$, leading to $\omega = \frac{2\pi}{T}$.
+
+    \item \textbf{3. Align the phase shift:}  
+    Choose $t_0$ so that the maximum of the cosine function occurs at the day
+    corresponding to the longest daylight (approximately $t=172$).  
+    This fixes the horizontal shift and completes the model.
+
+    \item \textbf{4. Apply the model to make predictions:}  
+    Substitute $t=80$ into the completed model to estimate the daylight hours,
+    and briefly discuss the limitations of the sinusoidal approximation
+    (e.g., weather, geography, non-perfect sinusoid).
+\end{itemize}
 \subsection*{Solution}
 
 \begin{itemize}
