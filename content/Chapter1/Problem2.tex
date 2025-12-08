@@ -11,6 +11,30 @@ with appropriate domains.
 \end{enumerate}
 
 \subsection*{Strategy}
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item \textbf{For $f$} \\
+    View $\sqrt{4 - x^2}$ as the top half of a circle of radius $2$ at the origin.  
+    Replace $x$ by $(x-1)$ to get a shift right by $1$.  
+    Use $4 - (x-1)^2 \ge 0$ for the domain and the square root’s min/max for the range.
+
+    \item \textbf{For $g$ and $g^{-1}$} \\
+    Require $x+2>0$ for the domain.  
+    Set $y = \ln(x+2)$, swap $x,y$, solve for $y$ via exponentials to get $g^{-1}$.  
+    Check by composing $g$ and $g^{-1}$.
+
+    \item \textbf{For $h(x) = f(g(x))$} \\
+    Write $h(x) = \sqrt{4 - (\ln(x+2) - 1)^2}$.  
+    Combine: $x>-2$ (from $g$) and $-1 \le \ln(x+2) \le 3$ (from $f$’s domain).  
+    Solve the log inequality for $x$; this gives a smaller interval than $(-2,\infty)$.
+
+    \item \textbf{For graphs and endpoint behavior} \\
+    Sketch $g(x)=\ln(x+2)$ and then $h(x)$ over its domain.  
+    Note that at the left endpoint, $\ln(x+2)=-1$ (boundary of $f$), so $h(x)=0$, showing how $f$ restricts $h$.
+
+\end{enumerate}
+
 \subsection*{Solution}
 \begin{enumerate}[label=(\alph*)]
 
