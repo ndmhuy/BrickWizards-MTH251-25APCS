@@ -10,6 +10,31 @@ Let
 \end{enumerate}
 
 \subsection*{Strategy}
+\begin{enumerate}[label=(\alph*)]
+
+    \item \textbf{Compute $f'(x)$} \\
+    Write $f(x) = \dfrac{u(x)}{v(x)}$ with $u(x)=e^{2x}$ and $v(x)=x^2+1$.  
+    Use the Chain Rule for $u'(x)$, the Power Rule for $v'(x)$, then apply the Quotient Rule and simplify.
+
+    \item \textbf{Linear Approximation at $x=0$} \\
+    Use the formula
+    \[
+        L(x) = f(0) + f'(0)x.
+    \]
+    Compute $f(0)$ and $f'(0)$, then plug in $x=0.1$ to approximate $f(0.1)$.
+
+    \item \textbf{Absolute Error} \\
+    Evaluate the exact $f(0.1)$ from the original formula (using a calculator for $e^{0.2}$).  
+    Then compute
+    \[
+        \big| f(0.1) - L(0.1) \big|.
+    \]
+
+    \item \textbf{Accuracy and $f''(x)$} \\
+    The tangent line $L(x)$ matches $f$ in value and slope at $x=0$, so it is accurate for $x$ close to $0$.  
+    By Taylor’s Theorem, the error is controlled by $f''(x)$ and grows like $(x-0)^2$, so as $|x|$ increases, curvature (via $f''$) makes the linear approximation less reliable.
+\end{enumerate}
+
 \subsection*{Solution}
 \begin{enumerate}[label=(\alph*)]
 
