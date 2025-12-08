@@ -29,13 +29,13 @@ Let
     \end{align*}
 
     \item \textbf{Linear Approximation at $x=0$} \\
-    The formula for linear approximation at $a=0$ is $L(x) = f(0) + f'(0)(x-0)$.
+    The formula for linearization at $a=0$ is $L(x) = f(0) + f'(0)(x-0)$.
     
     First, find the values at $x=0$:
     \[ f(0) = \frac{e^{2(0)}}{0^2+1} = \frac{1}{1} = 1 \]
     \[ f'(0) = \frac{2e^0(0^2 - 0 + 1)}{(0^2+1)^2} = \frac{2(1)}{1} = 2 \]
     
-    The linear approximation is:
+    The linearization is:
     \[ L(x) = 1 + 2(x) = \mathbf{1 + 2x} \]
     
     Approximating $f(0.1)$:
@@ -49,7 +49,7 @@ Let
     \[ \text{Error} = | f(0.1) - L(0.1) | \approx | 1.20931 - 1.2 | = \mathbf{0.00931} \]
 
     \item \textbf{Accuracy and Second Derivative} \\
-    The linear approximation $L(x)$ represents the tangent line to the curve at $x=0$.
+    The linearization $L(x)$ represents the tangent line to the curve at $x=0$.
     \begin{itemize}
         \item \textbf{Why it is accurate near 0:} At the point of tangency ($x=0$), the line and the curve touch and have the same slope. For very small $\Delta x$, the curve has not had "time" to bend away from the line significantly.
         \item \textbf{Why it breaks down for large $x$:} The function $f(x)$ is curved, while $L(x)$ is straight. As we move away from $x=0$, this curvature causes the gap between the function and the line to widen.
