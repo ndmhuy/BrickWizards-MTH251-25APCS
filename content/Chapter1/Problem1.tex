@@ -19,6 +19,28 @@ $Q(t)$ & 100 & 80 & 64 & 51.2 & 40.96 \\
 \end{enumerate}
 
 \subsection*{Strategy}
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item \textbf{Model Selection} \\
+    Compute successive \emph{differences} (test linear) and successive \emph{ratios} (test exponential).  
+    Choose the model for which these are (approximately) constant.
+
+    \item \textbf{Finding $Q_0$, $a$, and $k$} \\
+    Read $Q_0$ from $t=0$.  
+    Use $a = \dfrac{Q(1)}{Q(0)}$ (or any consecutive pair).  
+    Then set $a = e^{k}$ so $k = \ln(a)$.
+
+    \item \textbf{Time When $Q(t) < 20$ and Sensitivity} \\
+    Solve $Q(t)=20$ using $Q(t)=Q_0 a^{t}$ (or $Q_0 e^{kt}$) via logarithms to find $t$.  
+    Note that small changes in $a$ (or $k$) change $t$ because $t$ depends on $\ln(a)$.
+
+    \item \textbf{Limitations and Context} \\
+    For large $t$, the model predicts values close to $0$ forever and assumes a constant decay rate, which may be unrealistic.  
+    Mention a realistic use (e.g., radioactive/drug decay) and explain when changing conditions make the model fail.
+
+\end{enumerate}
+
 \subsection*{Solution}
 \begin{enumerate}[label=(\alph*)]
     \item \textbf{Model Selection} \\
