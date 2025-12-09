@@ -60,61 +60,61 @@ Here is a sketch of the region we are rotating:
 Since we are rotating around the $x$-axis, our cross-sections are vertical disks with thickness $dx$.
 The radius of each disk is the distance from the x-axis to the curve: $R(x) = x^2$.
 
-\begin{figure}[H]
-    \centering
-    % LEFT: 2D REGION
-    \begin{tikzpicture}[scale=0.8]
-        \begin{axis}[
-            width=0.45\textwidth,
-            axis lines=middle,
-            xlabel=$x$, ylabel=$y$,
-            xmin=-0.2, xmax=1.5,
-            ymin=-0.2, ymax=1.2,
-            title={\textbf{Region \& Rotation Axis ($y=0$)}}
-        ]
-            % Region Area
-            \addplot[fill=blue!10, domain=0:1] {x^2} \closedcycle;
-            
-            % Boundaries
-            \addplot[blue, thick, domain=0:1] {x^2} node[midway, above left] {$y=x^2$};
-            \addplot[thick, black] coordinates {(0,0) (1,0)}; % y=0
-            \addplot[red, thick] coordinates {(1,0) (1,1)} node[midway, right] {$x=1$};
-            
-            % Representative Slice (Disk)
-            \draw[fill=blue!30] (axis cs:0.6,0) rectangle (axis cs:0.7, 0.36);
-            \node at (axis cs:0.65, 0.18) {\scriptsize Disk};
-            
-            % Rotation Arrow
-            \draw[->, purple, thick] (axis cs:0.5, -0.075) arc (-90:0:0.15) node[right] {\small Rotate};
-        \end{axis}
-    \end{tikzpicture}
-    \hfill
-    % RIGHT: 3D SOLID (DISK METHOD)
-    \begin{tikzpicture}[scale=0.9]
-        \begin{axis}[
-            view={25}{30},
-            axis lines=center,
-            xlabel=$x$, ylabel=$y$, zlabel=$z$,
-            xmin=0, xmax=1.5, ymin=-1, ymax=1, zmin=-1, zmax=1,
-            title={\textbf{Solid of Revolution (Disk)}},
-            ticks=none
-        ]
-            % The Solid Surface
-            \addplot3[
-                surf, shader=interp, opacity=0.7,
-                colormap/viridis,
-                domain=0:1, y domain=0:360,
-                z buffer=sort
-            ]
-            ({x}, {x^2*cos(y)}, {x^2*sin(y)});
-            
-            % The "Lid" at x=1
-            \addplot3[fill=black!20, draw=black, domain=0:360]
-            ({1}, {cos(x)}, {sin(x)});
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Visualization of the Disk Method (Rotation about x-axis).}
-\end{figure}
+%\begin{figure}[H]
+%    \centering
+%    % LEFT: 2D REGION
+%    \begin{tikzpicture}[scale=0.8]
+%        \begin{axis}[
+%            width=0.45\textwidth,
+%            axis lines=middle,
+%            xlabel=$x$, ylabel=$y$,
+%            xmin=-0.2, xmax=1.5,
+%            ymin=-0.2, ymax=1.2,
+%            title={\textbf{Region \& Rotation Axis ($y=0$)}}
+%        ]
+%            % Region Area
+%            \addplot[fill=blue!10, domain=0:1] {x^2} \closedcycle;
+%            
+%            % Boundaries
+%            \addplot[blue, thick, domain=0:1] {x^2} node[midway, above left] {$y=x^2$};
+%            \addplot[thick, black] coordinates {(0,0) (1,0)}; % y=0
+%            \addplot[red, thick] coordinates {(1,0) (1,1)} node[midway, right] {$x=1$};
+%            
+%            % Representative Slice (Disk)
+%            \draw[fill=blue!30] (axis cs:0.6,0) rectangle (axis cs:0.7, 0.36);
+%            \node at (axis cs:0.65, 0.18) {\scriptsize Disk};
+%            
+%            % Rotation Arrow
+%            \draw[->, purple, thick] (axis cs:0.5, -0.075) arc (-90:0:0.15) node[right] {\small Rotate};
+%        \end{axis}
+%    \end{tikzpicture}
+%    \hfill
+%    % RIGHT: 3D SOLID (DISK METHOD)
+%    \begin{tikzpicture}[scale=0.9]
+%        \begin{axis}[
+%            view={25}{30},
+%            axis lines=center,
+%            xlabel=$x$, ylabel=$y$, zlabel=$z$,
+%            xmin=0, xmax=1.5, ymin=-1, ymax=1, zmin=-1, zmax=1,
+%            title={\textbf{Solid of Revolution (Disk)}},
+%            ticks=none
+%        ]
+%            % The Solid Surface
+%            \addplot3[
+%                surf, shader=interp, opacity=0.7,
+%                colormap/viridis,
+%                domain=0:1, y domain=0:360,
+%                z buffer=sort
+%            ]
+%            ({x}, {x^2*cos(y)}, {x^2*sin(y)});
+%            
+%            % The "Lid" at x=1
+%            \addplot3[fill=black!20, draw=black, domain=0:360]
+%            ({1}, {cos(x)}, {sin(x)});
+%        \end{axis}
+%    \end{tikzpicture}
+%    \caption{Visualization of the Disk Method (Rotation about x-axis).}
+%\end{figure}
 
 Using the disk formula $V = \int_{a}^{b} \pi [R(x)]^2 dx$:
 \[ V_a = \pi \int_{0}^{1} (x^2)^2 dx = \pi \int_{0}^{1} x^4 dx \]
@@ -128,65 +128,65 @@ Here, we use cylindrical shells. Since we are rotating about a vertical line $x=
     \item \textbf{Height ($h$):} The height of the shell is determined by the curve $y=x^2$.
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    % LEFT: 2D REGION WITH SHELL INFO
-    \begin{tikzpicture}[scale=0.8]
-        \begin{axis}[
-            width=0.45\textwidth,
-            axis lines=middle,
-            xlabel=$x$, ylabel=$y$,
-            xmin=0, xmax=2.5,
-            ymin=0, ymax=1.2,
-            title={\textbf{Region \& Rotation Axis ($x=2$)}}
-        ]
-            % Region
-            \addplot[fill=blue!10, domain=0:1] {x^2} \closedcycle;
-            \addplot[blue, thick, domain=0:1] {x^2};
-            \addplot[red, thick] coordinates {(1,0) (1,1)};
-            
-            % Axis of Rotation
-            \draw[red, dashed, very thick] (axis cs:2, 0) -- (axis cs:2, 1.2) node[above] {Axis $x=2$};
-            
-            % Radius Indicator
-            \draw[<->, purple, thick] (axis cs:0.6, 0.36) -- (axis cs:2, 0.36) node[midway, above] {\small $r = 2-x$};
-            
-            % Representative Shell (Rectangle)
-            \draw[fill=green!30] (axis cs:0.6,0) rectangle (axis cs:0.65, 0.36);
-        \end{axis}
-    \end{tikzpicture}
-    \hfill
-    % RIGHT: 3D SHELL
-    \begin{tikzpicture}[scale=0.9]
-        \begin{axis}[
-            view={120}{25},
-            axis lines=center,
-            xlabel=$x$, ylabel=$y$, zlabel=$z$,
-            xmin=-1, xmax=3, zmin=0, zmax=1,
-            title={\textbf{Representative Shell}},
-            ticks=none
-        ]
-            % Axis
-            \draw[red, dashed, thick] (axis cs:2,0,0) -- (axis cs:2,0,1);
-            
-            % The Shell (Cylinder)
-            % Center=(2,0), Radius=(2-0.6)=1.4, Height=0.6^2=0.36
-            \addplot3[
-                surf,
-                opacity=0.6,
-                fill=green!50!black, % Explicit color
-                shader=flat,
-                domain=0:360,
-                y domain=0:0.36,
-                z buffer=sort
-            ]
-            ({2 + 1.4*cos(x)}, {1.4*sin(x)}, {y});
-            
-            \node at (axis cs:0.6,0,0.4) {\small Single Shell};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Visualization of the Shell Method (Rotation about x=2).}
-\end{figure}
+%\begin{figure}[H]
+%    \centering
+%    % LEFT: 2D REGION WITH SHELL INFO
+%    \begin{tikzpicture}[scale=0.8]
+%        \begin{axis}[
+%            width=0.45\textwidth,
+%            axis lines=middle,
+%            xlabel=$x$, ylabel=$y$,
+%            xmin=0, xmax=2.5,
+%            ymin=0, ymax=1.2,
+%            title={\textbf{Region \& Rotation Axis ($x=2$)}}
+%        ]
+%            % Region
+%            \addplot[fill=blue!10, domain=0:1] {x^2} \closedcycle;
+%            \addplot[blue, thick, domain=0:1] {x^2};
+%            \addplot[red, thick] coordinates {(1,0) (1,1)};
+%            
+%            % Axis of Rotation
+%            \draw[red, dashed, very thick] (axis cs:2, 0) -- (axis cs:2, 1.2) node[above] {Axis $x=2$};
+%            
+%            % Radius Indicator
+%            \draw[<->, purple, thick] (axis cs:0.6, 0.36) -- (axis cs:2, 0.36) node[midway, above] {\small $r = 2-x$};
+%            
+%            % Representative Shell (Rectangle)
+%            \draw[fill=green!30] (axis cs:0.6,0) rectangle (axis cs:0.65, 0.36);
+%        \end{axis}
+%    \end{tikzpicture}
+%    \hfill
+%    % RIGHT: 3D SHELL
+%    \begin{tikzpicture}[scale=0.9]
+%        \begin{axis}[
+%            view={120}{25},
+%            axis lines=center,
+%            xlabel=$x$, ylabel=$y$, zlabel=$z$,
+%            xmin=-1, xmax=3, zmin=0, zmax=1,
+%            title={\textbf{Representative Shell}},
+%            ticks=none
+%        ]
+%            % Axis
+%            \draw[red, dashed, thick] (axis cs:2,0,0) -- (axis cs:2,0,1);
+%            
+%            % The Shell (Cylinder)
+%            % Center=(2,0), Radius=(2-0.6)=1.4, Height=0.6^2=0.36
+%            \addplot3[
+%                surf,
+%                opacity=0.6,
+%                fill=green!50!black, % Explicit color
+%                shader=flat,
+%                domain=0:360,
+%                y domain=0:0.36,
+%                z buffer=sort
+%            ]
+%            ({2 + 1.4*cos(x)}, {1.4*sin(x)}, {y});
+%            
+%            \node at (axis cs:0.6,0,0.4) {\small Single Shell};
+%        \end{axis}
+%    \end{tikzpicture}
+%    \caption{Visualization of the Shell Method (Rotation about x=2).}
+%\end{figure}
 
 Applying the shell formula $V = \int_{a}^{b} 2\pi r h \, dx$:
 \[ V_b = \int_{0}^{1} 2\pi (2-x)(x^2) dx \]
