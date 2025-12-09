@@ -26,7 +26,7 @@ To solve this problem, we will proceed as follows:
 
 \subsection*{Solution}
 
-\textbf{a)} Determine the constant $C$.
+\textbf{(a)} Determine the constant $C$.
 We compute the indefinite integral $\int x e^{-\frac{x^2}{2}} \, dx$.
 Let $u = -\frac{x^2}{2} \implies du = -x \, dx \implies dx = -\frac{du}{x}$.
 \begin{align*}
@@ -44,7 +44,7 @@ To find $C$, we use the normalization condition $\int_{0}^{\infty} f(x) \, dx = 
 
 \vspace{1em}
 
-\textbf{b)} Compute $E[X]$.
+\textbf{(b)} Compute $E[X]$.
 We have $E[X] = \int_{0}^{\infty} x f(x) \, dx$. Since $C=1$, $f(x) = x e^{-x^2/2}$.
 Consider the integral up to $t$: $I(t) = \int_{0}^{t} x \cdot (x e^{-\frac{x^2}{2}}) \, dx$.
 Using integration by parts:
@@ -84,7 +84,7 @@ Substituting back into (*):
 
 \vspace{1em}
 
-\textbf{c)} Compute $P(X > 1)$.
+\textbf{(c)} Compute $P(X > 1)$.
 \begin{align*}
     P(X > 1) &= \int_{1}^{\infty} f(x) \, dx \\
     &= \lim_{t \to \infty} \int_{1}^{t} x e^{-\frac{x^2}{2}} \, dx \\
@@ -92,7 +92,7 @@ Substituting back into (*):
     &= 0 - \left( -e^{-\frac{1}{2}} \right) \\
     &= \mathbf{e^{-1/2}}.
 \end{align*}
-\textbf{d)} \quad \textbf{Discussion on tail behavior and convergence:}
+\textbf{(d)} \quad \textbf{Discussion on tail behavior and convergence:}
 
 The function $f(x) = x e^{-x^2/2}$ is dominated by the Gaussian decay term $e^{-x^2/2}$ as $x \to \infty$.
 
