@@ -49,12 +49,12 @@ Since $\lim_{x \to \infty}\frac{f(x)}{g(x)} = 0$ and $\int_{1}^{\infty} g(x) dx$
 \textbf{(c)}
 Using $u = \ln x$ and $dv = \dfrac{1}{x^3} dx$:
 \begin{align*}
-    \int_{1}^{\infty} \frac{\ln x}{x^3} dx &= \lim_{t\to\infty}\int_1^t\frac{\ln x}{x^3}\\
+    \lim_{t\to\infty}\int_1^t\frac{\ln x}{x^3}
     &=\lim_{t \to \infty}\left\{ \left[-\frac{\ln x}{2x^2}\right]_{1}^{t} - \int_1^t \left( -\frac{1}{2x^2} \frac{1}{x} dx \right) \right\} \\
     &= \lim_{t \to \infty} \left\{\left( -\frac{\ln t}{2t^2} + \frac{\ln 1}{2(1)^2} \right) + \frac{1}{2} \int_{1}^{t} \frac{1}{x^3} dx\right\}
 \end{align*}
 Applying L'Hôpital, we get: $\lim_{t \to \infty} \dfrac{\ln t}{2t^2} = \lim_{t \to \infty} \dfrac{1/t}{4t} = 0$\\ And according to (a): $\lim_{t\to\infty}\int_{1}^{t} \frac{1}{x^3} dx=\frac{1}{3-1}=\frac{1}{2}$. Therefore:
-$$\int_{1}^{\infty} \frac{\ln x}{x^3} dx=\frac{1}{4}$$
+$$\int_{1}^{\infty} \frac{\ln x}{x^3} dx= \lim_{t\to\infty}\int_1^t\frac{\ln x}{x^3} =\frac{1}{4}$$
 
 \textbf{(d)} Explain how these examples illustrate the idea that a slowly growing factor like $\ln x$ can still be dominated by a sufficiently fast decaying power $x^{-p}$.
 
