@@ -1,10 +1,73 @@
 \section{Proof of Chebyshev's Theorem}
 \label{appendix:Chebyshev}
-\begin{theorem}
-Chebyshev's Theorem
+
+\begin{theorem}[Chebyshev's Theorem]
+The integral of a binomial differential
+\[ I = \int x^m (a + bx^n)^p \, dx, \quad \text{where } m, n, p \in \mathbb{Q} \setminus \{0\} \]
+is elementary if and only if at least one of the following expressions is an integer:
+\begin{enumerate}[label=(\arabic*)]
+    \item $p$
+    \item $\dfrac{m+1}{n}$
+    \item $p + \dfrac{m+1}{n}$
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
+\textbf{Part 1: Sufficiency}
 
+If one of the conditions above is met, we can transform the integral into a rational function using a specific substitution.
+
+\begin{description}
+    \item[Case (1): $p \in \mathbb{Z}$] 
+    Let $k$ be the least common multiple of the denominators of $m$ and $n$. We write $m = \frac{m'}{k}$ and $n = \frac{n'}{k}$ where $k \in \mathbb{Z}^+$.
+    
+    Substituting $x = z^k$, we have $dx = k z^{k-1} \, dz$. The integral becomes:
+    \[ 
+    I = \int z^{m'} (a + b z^{n'})^p \cdot k z^{k-1} \, dz = k \int z^{m' + k - 1} (a + b z^{n'})^p \, dz 
+    \]
+    Since $m', n', p, k \in \mathbb{Z}$, the integrand is a rational function of $z$. Thus, $I$ is elementary.
+
+    \item[Case (2): $\dfrac{m+1}{n} \in \mathbb{Z}$]
+    Let $p = \frac{r}{t}$ where $r, t \in \mathbb{Z}$. Let $s = \dfrac{m+1}{n} \in \mathbb{Z}$.
+    
+    We use the substitution $u = a + bx^n$, which implies $x = \left(\frac{u-a}{b}\right)^{\frac{1}{n}}$. To eliminate the radical in $(a+bx^n)^p$, we set $u = z^t$, so $a + bx^n = z^t$.
+    \[
+    x = \left(\frac{z^t - a}{b}\right)^{\frac{1}{n}} \implies dx = \frac{1}{n} \left(\frac{z^t - a}{b}\right)^{\frac{1}{n} - 1} \cdot \frac{t z^{t-1}}{b} \, dz
+    \]
+    Substituting these into the integral:
+    \[
+    \begin{aligned}
+    I &= \int \left(\frac{z^t - a}{b}\right)^{\frac{m}{n}} (z^t)^p \cdot \frac{t z^{t-1}}{bn} \left(\frac{z^t - a}{b}\right)^{\frac{1}{n} - 1} \, dz \\
+      &= \frac{t}{bn} \int z^{r + t - 1} \left(\frac{z^t - a}{b}\right)^{\frac{m+1}{n} - 1} \, dz \\
+      &= \frac{t}{bn} \int z^{r + t - 1} \left(\frac{z^t - a}{b}\right)^{s - 1} \, dz
+    \end{aligned}
+    \]
+    Since $s, r, t \in \mathbb{Z}$, the integrand is rational in $z$. Thus, $I$ is elementary.
+
+    \item[Case (3): $\dfrac{m+1}{n} + p \in \mathbb{Z}$]
+    We rewrite the integral by factoring out $x^{np}$:
+    \[ 
+    I = \int x^m \cdot x^{np} (a x^{-n} + b)^p \, dx = \int x^{m+np} (b + a x^{-n})^p \, dx 
+    \]
+    Let $M = m+np$ and $N = -n$. Checking the condition for Case (2) on this new form:
+    \[
+    \frac{M+1}{N} = \frac{m+np+1}{-n} = -\left(\frac{m+1}{n} + p\right)
+    \]
+    Since $\frac{m+1}{n} + p \in \mathbb{Z}$, the expression $\frac{M+1}{N}$ is an integer. This reduces the problem to Case (2). Thus, $I$ is elementary.
+\end{description}
+
+\vspace{1em}
+\noindent \textbf{Part 2: Remark on Necessity}
+
+If none of the three conditions are met, the integral cannot be expressed in elementary terms. 
+\begin{itemize}
+    \item If $p \notin \mathbb{Z}$, the term $(a+bx^n)^p$ is a radical. To rationalize it, we must substitute $a+bx^n = z^t$. As shown in Case (2), this only yields a rational integrand if $\frac{m+1}{n} \in \mathbb{Z}$.
+    \item If we attempt Integration by Parts with $u = (a+bx^n)^p$ and $dv = x^m dx$, we obtain:
+    \[
+    I = \frac{x^{m+1}}{m+1}(a+bx^n)^p - \frac{bpn}{m+1} \int x^{m+n}(a+bx^n)^{p-1} \, dx \quad (m \neq -1)
+    \]
+    The new integral requires the condition $(p-1) + \frac{m+n+1}{n} \in \mathbb{Z}$, which simplifies to $p + \frac{m+1}{n} \in \mathbb{Z}$. This does not generate a new condition but rather cycles back to the original ones.
+    \item If $m = -1$ or $p = -1$, logarithmic terms appear, which prevents the integral from being algebraic unless the integer conditions are satisfied.
+\end{itemize}
+Therefore, the conditions are both sufficient and necessary.
 \end{proof}
-\pagebreak
