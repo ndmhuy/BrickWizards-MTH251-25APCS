@@ -110,7 +110,13 @@ with appropriate domains.
         xmin = -3, xmax = 5,
         grid = major,
         width=10cm, height=7cm,
-        legend pos=north west
+        legend style={
+            at={(0.00,0)},
+            anchor=north west,
+            fill=white,
+            fill opacity=0.8,
+            draw=none
+        }
     ]
     
     \addplot [
