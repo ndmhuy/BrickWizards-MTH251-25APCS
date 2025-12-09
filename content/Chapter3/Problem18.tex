@@ -42,7 +42,7 @@ For $0<p\le1$, since $\frac{\ln x}{x^p}\ge\frac{1}{x^p}\quad \forall x\ge e$ and
 For $p>1$, let $q$ a real number such that $1<q<p$. Let $\delta = p-q > 0$.\\
 Let $f(x)=\frac{\ln x}{x^p}$ and $g(x) = \frac{1}{x^q}$, we have:
 $$\lim_{x \to \infty}\frac{f(x)}{g(x)}=\lim_{x \to \infty} \frac{\ln x}{x^p}:\frac{1}{x^q} = \lim_{x \to \infty} \frac{\ln x}{x^{p-q}} = \lim_{x \to \infty} \frac{\ln x}{x^\delta}$$
-Using L'Hôpital's Rule:
+Using L'Hospital's Rule:
 $$\lim_{x \to \infty} \frac{1/x}{\delta x^{\delta-1}} = \lim_{x \to \infty} \frac{1}{\delta x^\delta} = 0\quad\text{(since }\delta>0)$$
 Since $\lim_{x \to \infty}\frac{f(x)}{g(x)} = 0$ and $\int_{1}^{\infty} g(x) dx$ converges (according to (a)), applying the Limit Comparison Test, we get: the integral $\int_{1}^{\infty} \frac{\ln x}{x^p} dx$ converges for $p > 1$.
 
@@ -53,7 +53,7 @@ Using $u = \ln x$ and $dv = \dfrac{1}{x^3} dx$:
     &=\lim_{t \to \infty}\left\{ \left[-\frac{\ln x}{2x^2}\right]_{1}^{t} - \int_1^t \left( -\frac{1}{2x^2} \frac{1}{x} dx \right) \right\} \\
     &= \lim_{t \to \infty} \left\{\left( -\frac{\ln t}{2t^2} + \frac{\ln 1}{2(1)^2} \right) + \frac{1}{2} \int_{1}^{t} \frac{1}{x^3} dx\right\}
 \end{align*}
-Applying L'Hôpital, we get: $\lim_{t \to \infty} \dfrac{\ln t}{2t^2} = \lim_{t \to \infty} \dfrac{1/t}{4t} = 0$\\ And according to (a): $\lim_{t\to\infty}\int_{1}^{t} \frac{1}{x^3} dx=\frac{1}{3-1}=\frac{1}{2}$. Therefore:
+Applying L'Hospital's Rule, we get: $\lim_{t \to \infty} \dfrac{\ln t}{2t^2} = \lim_{t \to \infty} \dfrac{1/t}{4t} = 0$\\ And according to (a): $\lim_{t\to\infty}\int_{1}^{t} \frac{1}{x^3} dx=\frac{1}{3-1}=\frac{1}{2}$. Therefore:
 $$\int_{1}^{\infty} \frac{\ln x}{x^3} dx= \lim_{t\to\infty}\int_1^t\frac{\ln x}{x^3} =\frac{1}{4}$$
 
 \textbf{(d)} Explain how these examples illustrate the idea that a slowly growing factor like $\ln x$ can still be dominated by a sufficiently fast decaying power $x^{-p}$.
