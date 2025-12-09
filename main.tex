@@ -39,7 +39,7 @@ University of Science - VNUHCM\\
 
 % ============ DOCUMENT ============
 \begin{document}
-
+\renewcommand{\proofname}{Proof}
 \pagenumbering{roman}
 \input{content/title.tex}
 \input{content/assignment}
@@ -84,8 +84,9 @@ University of Science - VNUHCM\\
 % References
 % \input{ref/ref.tex}
 
-% % Appendix
-% \appendix
-% % Add \cleardoublepage to move appendices to next page.
-% \input{appendix/appendix.tex}
+ % Appendix
+\appendix
+ % Add \cleardoublepage to move appendices to next page.
+\input{appendix/appendix_limit.tex}
+\input{appendix/appendix_Chebyshev.tex}
 \end{document}

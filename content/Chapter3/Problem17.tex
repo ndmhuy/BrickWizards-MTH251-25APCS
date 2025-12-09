@@ -16,7 +16,9 @@ Let $f(x)=\sqrt{1+x^{3}}$ on the interval $[0, 2]$.
 \end{itemize}
 
 \subsection*{Solution}
-
+\begin{theorem}
+	Chebyshev's Theorem
+\end{theorem}
 \textbf{(a)} Using Chebyshev's Theorem for
 \[ \int \sqrt{\left(1 + x^3\right)} dx = \int x^m \cdot (a + bx^n)^p dx \]
 Whereas $m = 0$; $a = 1$; $b = 1$; $n = 3$; $p = \frac{1}{2}$
@@ -37,7 +39,7 @@ The length of each sub-interval is $\Delta x = 0.5$
 There we have $S_i = \Delta x \dfrac{1}{2}\left(f\left(\frac{i}{2}\right) + f\left(\frac{i+1}{2}\right)\right)$
 
 Use the Trapezoidal Rule with 4 sub-intervals, we get:
-\[ \int_0^2 f(x) dx \approx \sum_{i=0}^{3} S_i = \frac{1}{2} \Delta x \cdot \sum_{i=0}^{3} (f(\frac{i}{2}) + f(\frac{i+1}{2})) \]
+\[ \int_0^2 f(x) dx \approx \sum_{i=0}^{3} S_i = \frac{1}{2} \Delta x \cdot \sum_{i=0}^{3} \left(f\left(\frac{i}{2}\right) + f\left(\frac{i+1}{2}\right)\right) \]
 
 On the other hand: 
 \begin{align*}
