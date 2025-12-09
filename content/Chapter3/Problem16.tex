@@ -10,15 +10,24 @@ Consider the integral
 \end{enumerate}
 
 \subsection*{Strategy}
-To derive the reduction formula, we will evaluate the general integral for $I_n$ and express it in terms of $I_{n-1}$. Specifically, we will:
 
-\begin{itemize}
-    \item Use the integration by parts method.
-    \item Derive the reduction formula.
-    \item Verify the result using direct integration.
-\end{itemize}
+
+\begin{enumerate}
+    \item[(a)] To derive the reduction formula, we will evaluate the general integral $I_n$ and express it in terms of $I_{n-1}$ using \textbf{integration by parts}.
+    
+    \item[(b)] We will step up the ``ladder'' using the result from (a), then \textbf{verify} the result via direct integration (using integration by parts).
+    
+    \item[(c)] We will continue stepping up the ``ladder'' by applying the reduction formula derived in (a).
+    
+    \item[(d)] \textbf{Discussion on Practical Applications:}
+    \begin{itemize}
+        \item \textbf{Focus on Automation:} Explain that recursion turns complex calculus into simple algebra (multiplication and subtraction). This allows \textbf{Computer Algebra Systems} to solve integrals via loops rather than intuition.
+        
+        \item \textbf{Focus on Statistics:} Connect the integral to \textbf{Probability Moments} ($E[X^n]$). Explain how the formula allows for the calculation of variance or kurtosis for Exponential/Gamma distributions sequentially, avoiding repetitive integration work.
+    \end{itemize}
+\end{enumerate}
 \subsection*{Solution}
-\textbf{(a)} 
+\textbf{a)} 
 \noindent  When $n=0$,
 \[
     I_0 = \int e^x \, dx = e^x + C
@@ -49,7 +58,7 @@ To derive the reduction formula, we will evaluate the general integral for $I_n$
 
 \vspace{1em}
 
-\textbf{(b)}
+\textbf{b)}
 
 \noindent \textbf{+) Using above reduction formula:} \\
 First, we compute $I_1$:
@@ -88,7 +97,7 @@ Substituting back:
 \end{align*}
 
 \noindent \textbf{Conclusion:} From (1) and (2), the results from the formula and direct integration are the same.
-\textbf{(c)} \quad Using reduction formula for $I_3$:
+\textbf{c)} \quad Using reduction formula for $I_3$:
 \begin{align*}
     I_3 &= \int x^3 e^x \, dx \\
         &= x^3 \cdot e^x - 3 \cdot I_2 \\
@@ -96,7 +105,7 @@ Substituting back:
         &= x^3 \cdot e^x - 3x^2 e^x + 6x e^x - 6e^x - 6C \\
         &= e^x \left( x^3 - 3x^2 + 6x - 6 \right) - 6C
 \end{align*}
-\textbf{(d)} \quad \textbf{Discussion on practical usefulness:}
+\textbf{d)} \quad \textbf{Discussion on practical usefulness:}
 
 Such a reduction formula is highly valuable in practice for several reasons:
 
