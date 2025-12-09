@@ -11,15 +11,14 @@ Evaluate the following definite integrals using appropriate substitutions:
 
 \subsection*{Strategy}
 To evaluate these definite integrals, we look for a substitution $u = g(x)$ such that the derivative $g'(x)dx$ (or a multiple of it) appears in the integrand. The general strategy is:
-\begin{enumerate}
+\begin{enumerate}[label = (\alph*)]
     \item \textbf{Identify the inner function:} Look for a function "inside" another function (e.g., inside a denominator, a power, or a logarithm).
     \item \textbf{Check the derivative:} Verify if the derivative of that inner function is present as a multiplicative factor.
     \item \textbf{Change limits}
 \end{enumerate}
 
 \subsection*{Solution}
-\begin{itemize}
-    \item \textbf{(a) Evaluation of $I_1$:} \\
+\textbf{(a) Evaluation of $I_1$:} \\
     We have $I_1 = \int_{0}^{1} \frac{2x}{1+x^2} dx$.
     \begin{itemize}
         \item Let $u = 1 + x^2$. Then, $du = 2x \, dx$.
@@ -35,7 +34,7 @@ To evaluate these definite integrals, we look for a substitution $u = g(x)$ such
         \item \textbf{Explanation:} The substitution $u = 1 + x^2$ is natural because the numerator $2x$ is exactly the derivative of the denominator $1 + x^2$. This transforms a rational function into a standard natural logarithm integral form $\int \frac{du}{u}$.
     \end{itemize}
 
-    \item \textbf{(b) Evaluation of $I_2$:} \\
+\textbf{(b) Evaluation of $I_2$:} \\
     We have $I_2 = \int_{0}^{\pi/2} \sin^3 x \cos x \, dx$.
     \begin{itemize}
         \item Let $u = \sin x$. Then, $du = \cos x \, dx$.
@@ -51,7 +50,7 @@ To evaluate these definite integrals, we look for a substitution $u = g(x)$ such
         \item \textbf{Explanation:} We recognize that $\cos x$ is the derivative of $\sin x$. Since $\sin x$ is raised to a power, choosing $u = \sin x$ absorbs the $\cos x$ term into $du$, simplifying the integrand to a basic power rule form $u^n$.
     \end{itemize}
 
-    \item \textbf{(c) Evaluation of $I_3$ and FTC Check:} \\
+\textbf{(c) Evaluation of $I_3$ and FTC Check:} \\
     We have $I_3 = \int_{1}^{e} \frac{\ln x}{x} dx = \int_{1}^{e} (\ln x) \cdot \frac{1}{x} dx$.
     \begin{itemize}
         \item Let $u = \ln x$. Then, $du = \frac{1}{x} dx$.
@@ -72,7 +71,7 @@ To evaluate these definite integrals, we look for a substitution $u = g(x)$ such
         This matches the original integrand.
     \end{itemize}
 
-    \item \textbf{(d) Incorrect Substitution Example:} \\
+\textbf{(d) Incorrect Substitution Example:} \\
     Consider $I_1 = \int_{0}^{1} \frac{2x}{1+x^2} dx$.
     \begin{itemize}
         \item \textbf{Proposed Substitution:} Let $u = 2x$. Then $x = u/2$ and $dx = du/2$.
@@ -82,5 +81,4 @@ To evaluate these definite integrals, we look for a substitution $u = g(x)$ such
         \]
         \item \textbf{Why it fails/complicates:} While not mathematically "wrong" (it is still solvable), this substitution does not simplify the structure of the problem. 
     \end{itemize}
-\end{itemize}
 \pagebreak

@@ -8,7 +8,7 @@ Define
 \end{enumerate}
 
 \subsection*{Strategy}
-\begin{itemize}
+\begin{enumerate}[label=(\alph*)]
     \item \textbf{Part (a):} 
     To show continuity, we rely on the property that all polynomial functions are continuous on $\mathbb{R}$. Then, we will substitute $x=0, 1, 2$ into the expression of $F(x)$ to evaluate the required function values.
     
@@ -21,10 +21,9 @@ Define
     
     \item \textbf{Part (c):} 
     To generalize the method for locating and counting roots, we need to go beyond continuity. We will use the first derivative $F'(x)$ to identify critical points and determine intervals where the function is monotonic (strictly increasing or decreasing). By constructing a \textbf{variation table}, we can visualize how many times the graph crosses the x-axis.
-\end{itemize}
+\end{enumerate}
 \subsection*{Solution}
-\begin{itemize}
-    \item \textbf{(a)}
+\textbf{(a)}
 Since $F(x)=x^3-3x+1$ is an elementary function, $F$ is continuous on $\mathbb{R}$.\\
 Evaluating the function at specific points:
 \[
@@ -34,9 +33,9 @@ F(1) &= 1^3 - 3\times1 + 1 = -1 \\
 F(2) &= 2^3 - 3\times2 + 1 = 3
 \end{aligned}
 \]
-    \item \textbf{(b)}
+\textbf{(b)}
 Since $F(0)=1>0$, $F(1)=-1<0$ and F is continuous on the closed interval $[0, 1]$, by the \textbf{Intermediate Value Theorem}, there exists at least one real root $c \in (0, 1)$ such that $F(c) = 0$
-    \item \textbf{(c)}
+\textbf{(c)}
 To locate and count the real roots of a polynomial, we combine continuity with derivative information as follows:
 \begin{enumerate}
     \item Calculate $F'(x)$ and solve $F'(x)=0$ to find critical points. These points divide the domain into intervals where $F(x)$ is strictly monotonic
@@ -70,5 +69,4 @@ Construct a variation table: \\
     \item Interval $(1, +\infty)$: $F(x)$ goes from $-1$ to $+\infty$. Since it changes sign, there is \textbf{1 real root}.
 \end{itemize}
 Therefore, the equation $F(x)=0$ has exactly \textbf{3 distinct real roots}.
-\end{itemize}
 \pagebreak

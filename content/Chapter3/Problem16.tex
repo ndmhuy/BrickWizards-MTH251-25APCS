@@ -10,13 +10,22 @@ Consider the integral
 \end{enumerate}
 
 \subsection*{Strategy}
-To derive the reduction formula, we will evaluate the general integral for $I_n$ and express it in terms of $I_{n-1}$. Specifically, we will:
 
-\begin{itemize}
-    \item Use the integration by parts method.
-    \item Derive the reduction formula.
-    \item Verify the result using direct integration.
-\end{itemize}
+
+\begin{enumerate}
+    \item[(a)] To derive the reduction formula, we will evaluate the general integral $I_n$ and express it in terms of $I_{n-1}$ using \textbf{integration by parts}.
+    
+    \item[(b)] We will step up the ``ladder'' using the result from (a), then \textbf{verify} the result via direct integration (using integration by parts).
+    
+    \item[(c)] We will continue stepping up the ``ladder'' by applying the reduction formula derived in (a).
+    
+    \item[(d)] \textbf{Discussion on Practical Applications:}
+    \begin{itemize}
+        \item \textbf{Focus on Automation:} Explain that recursion turns complex calculus into simple algebra (multiplication and subtraction). This allows \textbf{Computer Algebra Systems} to solve integrals via loops rather than intuition.
+        
+        \item \textbf{Focus on Statistics:} Connect the integral to \textbf{Probability Moments} ($E[X^n]$). Explain how the formula allows for the calculation of variance or kurtosis for Exponential/Gamma distributions sequentially, avoiding repetitive integration work.
+    \end{itemize}
+\end{enumerate}
 \subsection*{Solution}
 \textbf{a)} 
 \noindent  When $n=0$,

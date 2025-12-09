@@ -42,8 +42,7 @@ $Q(t)$ & 100 & 80 & 64 & 51.2 & 40.96 \\
 \end{enumerate}
 
 \subsection*{Solution}
-\begin{enumerate}[label=(\alph*)]
-    \item \textbf{Model Selection} \\
+\textbf{(a) Model Selection} \\
     To determine the appropriate model, we check for constant differences (linear) or constant ratios (exponential).
     
     \textbf{Check for Linear (Differences):}
@@ -61,7 +60,7 @@ $Q(t)$ & 100 & 80 & 64 & 51.2 & 40.96 \\
     \end{itemize}
     Since the ratio between successive terms is constant ($0.8$), an \textbf{exponential model} is appropriate.
 
-    \item \textbf{Determining Parameters} \\
+\textbf{(b) Determining Parameters} \\
     We assume the form $Q(t) = Q_{0}a^{t}$.
     \begin{itemize}
         \item $Q_{0}$ is the initial value at $t=0$, so $\mathbf{Q_{0} = 100}$.
@@ -75,7 +74,7 @@ $Q(t)$ & 100 & 80 & 64 & 51.2 & 40.96 \\
     The continuous decay model is:
     \[ \mathbf{Q(t) = 100e^{-0.2231t}} \]
 
-    \item \textbf{Estimation and Sensitivity} \\
+\textbf{(c) Estimation and Sensitivity} \\
     We need to find $t$ when $Q(t) < 20$.
     \[ 20 = 100(0.8)^{t} \]
     \[ 0.2 = 0.8^{t} \]
@@ -85,7 +84,7 @@ $Q(t)$ & 100 & 80 & 64 & 51.2 & 40.96 \\
     
     \textbf{Sensitivity Comment:} The calculation involves logarithms of ratios. A very small change in the data (e.g., if the ratio was $0.81$ instead of $0.8$) would change the denominator $\ln(a)$, leading to a significantly different time estimate. Thus, the prediction is quite sensitive to measurement noise in the original data.
 
-    \item \textbf{Limitations for Large $t$} \\
+\textbf{(d) Limitations for Large $t$} \\
     For very large $t$ (long term), the mathematical model has limitations:
     \begin{itemize}
         \item \textbf{The "Zero" Limit:} Mathematically, $Q(t)$ approaches 0 but never reaches it. In reality, if $Q(t)$ represents a physical substance (like atoms or bacteria), it is discrete. Eventually, you cannot have $0.01$ of an atom; the model breaks down when $Q(t) < 1$.
@@ -94,7 +93,6 @@ $Q(t)$ & 100 & 80 & 64 & 51.2 & 40.96 \\
     
     \textbf{Real-world context:} This is reasonable for \textbf{radioactive decay} (where physics dictates a constant rate) or \textbf{drug clearance} in the bloodstream. It breaks down when the concentration becomes so low that it is undetectable or interacts with background noise.
 
-\end{enumerate}
 
 \vspace{1cm}
 \noindent\textbf{Visualizing the Decay:}
