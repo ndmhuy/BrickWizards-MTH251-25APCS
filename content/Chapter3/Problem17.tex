@@ -8,20 +8,18 @@ Let $f(x)=\sqrt{1+x^{3}}$ on the interval $[0, 2]$.
 \end{enumerate}
 \subsection*{Strategy}
 
-\begin{enumerate}[label = (\alph*)]
-    \item We can see the function inside the integral sign of I is a binomial function, normal ways to prove this antiderivative isn't elemental seems to be a massive work, so we reach out to Chebyshev Theorem, in which if the conditions are all not met, the antiderivative isn't elemental.
-    \item Use Trapezoidal Rule with 4 sub-intervals.
-    \item To use Simpson's Rule with 4 sub-intervals, or 5 points, calculate the area using 1/3 rule for 2 sets of 3 points in order 1-2-3 and 3-4-5.
-    \item Simpson's rule works wonder in cases where the graph of the function is a curve, even better if it concaves upward or downward and/or has a highest degree of 3, while the Trapezoidal Rule calculate the area of small trapezoidals, it works better if the graph of the function is linear.
-\end{enumerate}
+\begin{itemize}
+    \item \textbf{(a):} We can see the function inside the integral sign of I is a binomial function, normal ways to prove this antiderivative isn't elemental seems to be a massive work, so we reach out to Chebyshev Theorem, in which if the conditions are all not met, the antiderivative isn't elemental.
+    \item \textbf{(b):} Use Trapezoidal Rule with 4 sub-intervals.
+    \item \textbf{(c):} To use Simpson's Rule with 4 sub-intervals, or 5 points, calculate the area using 1/3 rule for 2 sets of 3 points in order 1-2-3 and 3-4-5.
+    \item \textbf{(d):} Simpson's rule works wonder in cases where the graph of the function is a curve, even better if it concaves upward or downward and/or has a highest degree of 3, while the Trapezoidal Rule calculate the area of small trapezoidals, it works better if the graph of the function is linear.
+\end{itemize}
 
 \subsection*{Solution}
 \begin{theorem}
 	Chebyshev's Theorem
 \end{theorem}
-Proved in Appendix \ref{appendix:Chebyshev} \\
 \textbf{(a)} Using Chebyshev's Theorem for
-
 \[ \int \sqrt{\left(1 + x^3\right)} dx = \int x^m \cdot (a + bx^n)^p dx \]
 Whereas $m = 0$; $a = 1$; $b = 1$; $n = 3$; $p = \frac{1}{2}$
 
@@ -38,10 +36,10 @@ Since none of the conditions above are met, $f(x)$ doesn't have a simple element
 
 The length of each sub-interval is $\Delta x = 0.5$
 
-There we have $S_i = \Delta x \dfrac{1}{2}(f(\frac{i}{2}) + f(\frac{i+1}{2}))$
+There we have $S_i = \Delta x \dfrac{1}{2}\left(f\left(\frac{i}{2}\right) + f\left(\frac{i+1}{2}\right)\right)$
 
 Use the Trapezoidal Rule with 4 sub-intervals, we get:
-\[ \int_0^2 f(x) dx \approx \sum_{i=0}^{3} S_i = \frac{1}{2} \Delta x \cdot \sum_{i=0}^{3} (f(\frac{i}{2}) + f(\frac{i+1}{2})) \]
+\[ \int_0^2 f(x) dx \approx \sum_{i=0}^{3} S_i = \frac{1}{2} \Delta x \cdot \sum_{i=0}^{3} \left(f\left(\frac{i}{2}\right) + f\left(\frac{i+1}{2}\right)\right) \]
 
 On the other hand: 
 \begin{align*}
@@ -55,7 +53,7 @@ f(2) &= 3
 Thus $\int_0^2 f(x) dx \approx 3.2833$
 
 \textbf{(c)} Computing similarly to above, we have
-\[ T_i = \Delta x \cdot \frac{1}{3} \cdot \left(f(\frac{i-1}{2}) + 4f(\frac{i}{2}) + f(\frac{i+1}{2})\right) \]
+\[ T_i = \Delta x \cdot \frac{1}{3} \cdot \left(f\left(\frac{i-1}{2}\right) + 4f\left(\frac{i}{2}\right) + f\left(\frac{i+1}{2}\right)\right) \]
 
 Use Simpson's Rule with 4 sub-intervals and 5 points:
 \[ \int_0^2 f(x) dx \approx \sum_{i} T_1 + T_3 \approx 3.2396 \]
@@ -129,12 +127,12 @@ And $\dfrac{m+1}{n} = s \quad (s \in \mathbb{Z})$
 
 Let $a + bx^n = z^t$
 
-\[ \Rightarrow \begin{cases} dx = \dfrac{x^{1-n}}{bn} \cdot t \cdot z^{t-1)} dz \\ x = (\dfrac{z^t-a}{b})^\frac{1}{n} \end{cases}\]
+\[ \Rightarrow \begin{cases} dx = \dfrac{x^{1-n}}{bn} \cdot t \cdot z^{t-1} dz \\ x = \left(\dfrac{z^t-a}{b}\right)^\frac{1}{n} \end{cases}\]
 
 There we have: 
 \[ x^m dx = x^{m+1-n} \cdot \frac{tz^{t-1}}{bn} dz \]
 \[ = \frac{x^{n(s-1)}}{bn} \cdot tz^{t-1} dz \]
-\[ = \frac{1}{bn} \cdot (\frac{z^t - a}{b})^{s-1} \cdot tz^{t-1} dz \]
+\[ = \frac{1}{bn} \cdot \left(\frac{z^t - a}{b}\right)^{s-1} \cdot tz^{t-1} dz \]
 
 Thus 
 \[ I = \int \frac{1}{bn} \left(\frac{z^t - a}{b}\right)^{s-1} \cdot tz^{t-1} \cdot z^r dz \]
@@ -173,7 +171,7 @@ Hence we substitute $a + bx^n = z^t$ so that $(a + bx^n)^p$ becomes $(z^t)^{\fra
 
 However, problems arise when we process dz
 
-as $x^m dx = (\frac{z^t - a}{b})^{\frac{m+1}{n} - 1} \cdot \frac{tz^{t-1}}{bn} dz$
+as $x^m dx = \left(\frac{z^t - a}{b}\right)^{\frac{m+1}{n} - 1} \cdot \frac{tz^{t-1}}{bn} dz$
 
 The goal is to turn $I$ into an integral of a rational function.
 
