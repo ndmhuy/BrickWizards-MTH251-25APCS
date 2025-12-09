@@ -36,9 +36,8 @@ with appropriate domains.
 \end{enumerate}
 
 \subsection*{Solution}
-\begin{enumerate}[label=(\alph*)]
 
-    \item \textbf{Transformation and Domain of $f$} \\
+\textbf{(a) Transformation and Domain of $f$} \\
     The base function is $y_{base} = \sqrt{4-x^2}$, which represents the upper semi-circle centered at $(0,0)$ with radius $2$.
     
     The function $f(x) = \sqrt{4-(x-1)^2}$ replaces $x$ with $(x-1)$.
@@ -51,7 +50,7 @@ with appropriate domains.
         \[ \text{Range: } \mathbf{[0, 2]} \]
     \end{itemize}
 
-    \item \textbf{Inverse of $g$} \\
+\textbf{(b) Inverse of $g$} \\
     Let $g(x) = \ln(x+2)$.
     \begin{itemize}
         \item \textbf{Domain:} The argument must be positive: $x+2 > 0 \implies x > -2$. Domain: $\mathbf{(-2, \infty)}$.
@@ -71,7 +70,7 @@ with appropriate domains.
         \[ g^{-1}(g(x)) = e^{\ln(x+2)} - 2 = (x+2) - 2 = x \]
     \end{itemize}
 
-    \item \textbf{Composition and Domain of $h$} \\
+\textbf{(c) Composition and Domain of $h$} \\
     The composition is $h(x) = f(g(x))$. Substituting $g(x)$ into $f(x)$:
     \[ h(x) = \sqrt{4 - (\ln(x+2) - 1)^2} \]
     
@@ -89,7 +88,7 @@ with appropriate domains.
     \textbf{Why is it more restrictive?}
     The domain of $g$ is $(-2, \infty)$. However, $h$ restricts this further because the output of $g$ cannot just be \textit{any} number; it must be small enough so that when we square it and subtract it from 4 (in the outer function), the result is valid. Specifically, $g(x)$ cannot exceed 3 or be less than -1.
 
-    \item \textbf{Graphs and Behavior} \\
+\textbf{(d) Graphs and Behavior} \\
     The graphs of $g(x)$ and $h(x)$ are shown below.
     
     \textbf{Discussion of Left Endpoint:}
@@ -98,7 +97,6 @@ with appropriate domains.
     Plugging this into $f$, we get $f(-1) = \sqrt{4-(-1-1)^2} = \sqrt{4-4} = 0$.
     Thus, as $x$ approaches the left boundary of the domain, $h(x)$ goes to 0. This reflects the "edge" of the semi-circle in the outer function.
     
-\end{enumerate}
 
 \vspace{1em}
 

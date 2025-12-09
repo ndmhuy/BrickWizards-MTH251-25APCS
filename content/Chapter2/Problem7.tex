@@ -36,9 +36,8 @@ Let
 \end{enumerate}
 
 \subsection*{Solution}
-\begin{enumerate}[label=(\alph*)]
 
-    \item \textbf{Compute $f'(x)$} \\
+\textbf{(a) Compute $f'(x)$} \\
     Let $f(x) = \frac{e^{2x}}{x^2+1}$. We identify:
     \begin{align*}
         u &= e^{2x} & v &= x^2+1 \\
@@ -53,7 +52,7 @@ Let
         &= \mathbf{\frac{2e^{2x}(x^2 - x + 1)}{(x^2+1)^2}}
     \end{align*}
 
-    \item \textbf{Linear Approximation at $x=0$} \\
+\textbf{(b) Linear Approximation at $x=0$} \\
     The formula for linearization at $a=0$ is $L(x) = f(0) + f'(0)(x-0)$.
     
     First, find the values at $x=0$:
@@ -66,14 +65,14 @@ Let
     Approximating $f(0.1)$:
     \[ f(0.1) \approx L(0.1) = 1 + 2(0.1) = \mathbf{1.2} \]
 
-    \item \textbf{Absolute Error Calculation} \\
+\textbf{(c) Absolute Error Calculation} \\
     First, we calculate the exact value of $f(0.1)$:
     \[ f(0.1) = \frac{e^{0.2}}{(0.1)^2+1} = \frac{e^{0.2}}{1.01} \approx \frac{1.2214027}{1.01} \approx 1.20931 \]
     
     Now, calculate the absolute error:
     \[ \text{Error} = | f(0.1) - L(0.1) | \approx | 1.20931 - 1.2 | = \mathbf{0.00931} \]
 
-    \item \textbf{Accuracy and Second Derivative} \\
+\textbf{(d) Accuracy and Second Derivative} \\
     The linearization $L(x)$ represents the tangent line to the curve at $x=0$.
     \begin{itemize}
         \item \textbf{Why it is accurate near 0:} At the point of tangency ($x=0$), the line and the curve touch and have the same slope. For very small $\Delta x$, the curve has not had "time" to bend away from the line significantly.
@@ -81,7 +80,6 @@ Let
         \item \textbf{Relation to $f''(x)$:} The second derivative $f''(x)$ measures the \textbf{concavity} (or curvature) of the function. The error in linear approximation is approximately proportional to $\frac{1}{2}f''(c)(x-a)^2$ (from Taylor's Theorem). If $f''(x)$ is large, the graph curves sharply, and the linear approximation becomes inaccurate very quickly. If $f''(x) \approx 0$, the graph is nearly flat, and the line remains accurate for longer.
     \end{itemize}
 
-\end{enumerate}
 
 \vspace{1em}
 \noindent\textbf{Visualizing the Approximation:}

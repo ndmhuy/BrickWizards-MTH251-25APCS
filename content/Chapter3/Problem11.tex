@@ -16,9 +16,8 @@ Let $f(x)=x^{2}+2x$ on the interval $[0, a]$, where $a>0$ is a constant.
     \item We express the final expression geometrically and show the relationship between the area and the parameter a.
 \end{enumerate}
 \subsection*{Solution}
-\begin{enumerate}[label = (\alph*)]
 
-    \item \textbf{Construction and expression of $\mathbf{R_n}$}
+\textbf{(a) Construction and expression of $\mathbf{R_n}$}
     \begin{itemize}
     \item \textbf{Construction:} \\
     To start with, we construct the $n$ equal subintervals. Since there are $n$ equal subintervals in the interval $[0, a]$, the width of each rectangle in the corresponding subinterval is: 
@@ -44,7 +43,7 @@ Let $f(x)=x^{2}+2x$ on the interval $[0, a]$, where $a>0$ is a constant.
     \begin{center} \fbox{$\displaystyle R_n = \sum_{i=1}^n (\frac{i^{2}a^{3} + 2ia^{2}n}{n^3})$} \end{center}
     \end{itemize}
 
-    \item \textbf{Rewriting $\mathbf{R_n}$} \\
+\textbf{(b) Rewriting $\mathbf{R_n}$} \\
     To rewrite $R_n$, we first notice that the formula of $R_n$ contains the constant \(\displaystyle\frac{a^2}{n^2}\), which can be put outside the sigma notation.\\
     We rewrite $R_n$ as: \[R_n = \frac{a^2}{n^2}\sum_{i=1}^n (\frac{i^{2}a}{n} + 2i)\]
     Let \[S = \sum_{i=1}^n (\frac{i^{2}a}{n} + 2i)\] 
@@ -65,7 +64,7 @@ Let $f(x)=x^{2}+2x$ on the interval $[0, a]$, where $a>0$ is a constant.
     
     \begin{center} \fbox{$\displaystyle R_n = \frac{a^3 (n+1)(2n+1)}{6n^2} + \frac{a^2 (n+1)}{n}$} \end{center}
 
-    \item \textbf{Limit computation and verification:}
+\textbf{(c) Limit computation and verification:}
     \begin{itemize} 
     \item \textbf{Limit calculation:}
     \begin{align*}
@@ -93,7 +92,7 @@ Let $f(x)=x^{2}+2x$ on the interval $[0, a]$, where $a>0$ is a constant.
     From (4) and (5), it can be seen that the Riemann sum limit matches the antiderivative result. Hence, the computation is verified.
     \end{itemize}
     
-    \item \textbf{Interpretation and Parameter Dependence:}
+\textbf{(d) Interpretation and Parameter Dependence:}
     The final expression $A(a) = \frac{a^3}{3} + a^2$ represents the \textbf{exact area} under the curve $f(x)=x^2+2x$ from $x=0$ to $x=a$.
     
     \begin{itemize}
@@ -105,5 +104,4 @@ Let $f(x)=x^{2}+2x$ on the interval $[0, a]$, where $a>0$ is a constant.
         \]
         Since $A(2a) \neq 2 \cdot A(a)$, doubling the width of the interval more than doubles the area due to the cubic and quadratic growth terms.
     \end{itemize}
-\end{enumerate}
 \pagebreak

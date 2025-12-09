@@ -9,14 +9,14 @@ A lamp is mounted at the top of a 5-m high pole. A person who is 1.8 m tall walk
 \end{enumerate}
 
 \subsection*{Strategy}
-\begin{itemize}
+\begin{enumerate}[label=(\alph*)]
 
-    \item[(1)] 
+    \item
     Let $x$ be the horizontal distance of the person from the pole, and let 
     $s$ be the length of the person’s shadow on the ground.  
     Then the tip of the shadow is $x+s$ meters from the pole.
 
-    \item[(2)]
+    \item
     Observe that the lamp at height $5$ m, the person of height $1.8$ m, and the
     shadow tip form two similar right triangles.  
     Using the ratio of corresponding sides, we set up the proportion
@@ -26,19 +26,19 @@ A lamp is mounted at the top of a 5-m high pole. A person who is 1.8 m tall walk
     Solving this proportionality will give a direct linear relation between 
     the shadow length $s$ and the distance $x$.
 
-    \item[(3)]
+    \item
     Once the relationship $s = kx$ is obtained (where $k=0.5625$), 
     differentiate with respect to time $t$ to find 
     $\dfrac{ds}{dt}$ in terms of $\dfrac{dx}{dt}$, using the fact that the 
     person walks away from the pole at $1.2$ m/s.
 
-    \item[(4)]
+    \item
     To determine how fast the \emph{tip} of the shadow moves, 
     note that its position is $x+s$.  
     Differentiate $x+s$ with respect to time and substitute 
     $\dfrac{dx}{dt}=1.2$ and the relation between $s$ and $x$ 
     to obtain $\dfrac{d(x+s)}{dt}$.
-\end{itemize}
+\end{enumerate}
 
 \subsection*{Solution}
 \begin{tikzpicture}[scale=0.9]
@@ -73,14 +73,12 @@ A lamp is mounted at the top of a 5-m high pole. A person who is 1.8 m tall walk
 
 \end{tikzpicture}
 
-\begin{itemize}
-
-    \item[(a)] 
+    \textbf{(a)}
     We denote by $x$ the distance of the person from the pole and by $s$ the 
     length of the shadow behind the person. The tip of the shadow is therefore 
     $x+s$ meters from the pole.
 
-    \item[(b)] 
+    \textbf{(b)}
     Using similar triangles, the lamp, person, and shadow satisfy
     \[
         \frac{5}{x+s} = \frac{1.8}{s}.
@@ -97,7 +95,7 @@ A lamp is mounted at the top of a 5-m high pole. A person who is 1.8 m tall walk
         \boxed{s = \frac{1.8}{3.2}x = 0.5625\,x}.
     \]
 
-    \item[(c)] 
+    \textbf{(c)} 
     Differentiate the relation $s = 0.5625x$:
     \[
         \frac{ds}{dt} = 0.5625 \frac{dx}{dt}.
@@ -108,7 +106,7 @@ A lamp is mounted at the top of a 5-m high pole. A person who is 1.8 m tall walk
     \]
     The positive sign means the shadow is growing.
 
-    \item[(d)]
+    \textbf{(d)}
     The tip of the shadow is located at
     \[
         x+s = x + 0.5625x = 1.5625x.
@@ -123,5 +121,4 @@ A lamp is mounted at the top of a 5-m high pole. A person who is 1.8 m tall walk
     \]
     Thus, the shadow’s tip moves faster than the person (1.875 m/s compared to 1.2 m/s).
 
-\end{itemize}
 \pagebreak

@@ -21,8 +21,7 @@ Consider the improper integral
 \end{enumerate}
 
 \subsection*{Solution}
-\begin{enumerate}[label=(\alph*), start=1]
-\item 
+\textbf{(a)}
 For $p > 1$:
 \begin{align*}
 J(p) &= \lim_{t \to \infty} \int_{1}^{t} x^{-p} dx = \lim_{t \to \infty} \left[ \frac{x^{1-p}}{1-p} \right]_{1}^{t} \\
@@ -38,7 +37,7 @@ For $0 < p < 1$:
 Hence, the integral $J(p)$ converges if and only if $p > 1$.
 
 
-\item
+\textbf{(b)}
 For $0<p\le1$, since $\frac{\ln x}{x^p}\ge\frac{1}{x^p}\quad \forall x\ge e$ and $\int_e^\infty\frac{1}{x^p}$ diverges, $\int_e^\infty\frac{\ln x}{x^p}$ also diverges.\\
 For $p>1$, let $q$ a real number such that $1<q<p$. Let $\delta = p-q > 0$.\\
 Let $f(x)=\frac{\ln x}{x^p}$ and $g(x) = \frac{1}{x^q}$, we have:
@@ -47,7 +46,7 @@ Using L'Hôpital's Rule:
 $$\lim_{x \to \infty} \frac{1/x}{\delta x^{\delta-1}} = \lim_{x \to \infty} \frac{1}{\delta x^\delta} = 0\quad\text{(since }\delta>0)$$
 Since $\lim_{x \to \infty}\frac{f(x)}{g(x)} = 0$ and $\int_{1}^{\infty} g(x) dx$ converges (according to (a)), applying the Limit Comparison Test, we get: the integral $\int_{1}^{\infty} \frac{\ln x}{x^p} dx$ converges for $p > 1$.
 
-\item
+\textbf{(c)}
 Using $u = \ln x$ and $dv = \dfrac{1}{x^3} dx$:
 \begin{align*}
     \int_{1}^{\infty} \frac{\ln x}{x^3} dx &= \lim_{t\to\infty}\int_1^t\frac{\ln x}{x^3}\\
@@ -57,8 +56,7 @@ Using $u = \ln x$ and $dv = \dfrac{1}{x^3} dx$:
 Applying L'Hôpital, we get: $\lim_{t \to \infty} \dfrac{\ln t}{2t^2} = \lim_{t \to \infty} \dfrac{1/t}{4t} = 0$\\ And according to (a): $\lim_{t\to\infty}\int_{1}^{t} \frac{1}{x^3} dx=\frac{1}{3-1}=\frac{1}{2}$. Therefore:
 $$\int_{1}^{\infty} \frac{\ln x}{x^3} dx=\frac{1}{4}$$
 
-\item Explain how these examples illustrate the idea that a slowly growing factor like $\ln x$ can still be dominated by a sufficiently fast decaying power $x^{-p}$.
+\textbf{(d)} Explain how these examples illustrate the idea that a slowly growing factor like $\ln x$ can still be dominated by a sufficiently fast decaying power $x^{-p}$.
 
 The integrals show that the convergence condition for $\int_{1}^{\infty} x^{-p} dx$ is $p > 1$. The factor $\ln x$, which grows slower than any positive power of $x$ does not change this convergence criterion. If $p$ is sufficiently large ($p > 1$), the polynomial decay of $x^{-p}$ is fast enough to dominate the slow logarithmic growth, ensuring the integral remains finite.
-\end{enumerate}
 \pagebreak
